@@ -7,9 +7,10 @@ export type ProfessorProps = {
 export const Container = styled.TouchableOpacity.attrs({
     activeOpacity: 0.7
 }) <ProfessorProps>`
-    width: 200px;
+    width: 45%;
     padding: 22px;
     border-radius: 7px;
+    margin: 7px;
     background-color: ${({ theme , type }) => type === 'primary' ? 'red' : 'green'};
     /* condicional que muda a cor do background de acordo com o valor de type */
 
@@ -32,11 +33,14 @@ export const Photo = styled.Image`
 export const Name = styled.Text`
     margin-top: 7px;
     font-size: 18px;
-    color: ${({ theme }) => theme.colors.Text_Prymary}
+    color: ${({ theme }) => theme.colors.Text_Prymary};
+    text-align: center;
+    font-weight: 700;
 `;
 
 export const Specialist = styled.Text`
     margin-top: 3px;
     font-size: 14px;
-    color: ${({ theme }) => theme.colors.Text_Prymary}
+    color: ${({ theme }) => theme.colors.Text_Prymary};
+    text-align: center;
 `;

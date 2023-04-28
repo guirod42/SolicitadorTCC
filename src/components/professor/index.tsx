@@ -6,20 +6,27 @@ import {
     ProfessorProps
 } from "./styles";
 
+export type ProfessorDataProps = {
+    id: string,
+    photo: string,
+    name: string,
+    specialist: string,
+}
 
+type Props = ProfessorProps & {
+    data: ProfessorDataProps;
+}
 
-export function Professor({type}: ProfessorProps) {
+export function Professor({type , data, ...rest }: Props) {
     return (
-        <Container type={ type }>
-            <Photo source={{uri: "https:github.com/guirod42.png"}}
+        <Container type={ type } { ...rest}>
+            <Photo source={{uri: data.photo}}
             />
-
             <Name>
-                Guilherme Silva Rodrigues
+                {data.name}
             </Name>
-
             <Specialist>
-                IoT
+                {data.specialist}
             </Specialist>
         </Container>
     )

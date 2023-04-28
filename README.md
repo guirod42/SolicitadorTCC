@@ -64,3 +64,25 @@ git status
 git commit -m "styles, properties, conditional formatting"
 git push -u origin master
 
+-- FlatList com condicionais
+-- No estilo da Home, criar um componente List do tipo FlatList e Importar este na Home
+-- Na Home, dentro da FlatList importada com nome de List, enviar os parâmetros
+<List
+	data={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
+	keyExtractor={item => item}
+	renderItem={() => <Professor type="primary" />}
+	numColumns={2}
+>
+
+-- Para fazer a tipagem da FlatList, dentro do styles.ts
+export const List = styled(FlatList as new (props: FlatListProps<string>) => FlatList<string>) `
+`;
+-- onde string pode ser um objeto complexo, mas que pra isso, pracisa ser criado e importado do componente
+
+-- FlatList renderizada
+
+git status
+git add .
+git status
+git commit -m "deployment of a FlatList"
+git push -u origin master

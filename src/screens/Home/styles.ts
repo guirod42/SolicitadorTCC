@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { FlatList , FlatListProps } from 'react-native';
 import styled from 'styled-components/native';
+import { ProfessorDataProps } from '../../components/professor'
 
 /* importar o styled com /native, fazer a tipagem do styled-component 
 e instalar a extensão vscode-styled-components */
@@ -11,7 +12,6 @@ export const Container = styled.View`
     background: ${({ theme }) => theme.colors.Background};
 `;
 
-export const Text = styled.Text`
-    font-size: 48px;
-    color: ${({ theme }) => theme.colors.Text_Prymary};
+export const List = styled(FlatList as new (props: FlatListProps<ProfessorDataProps>) => FlatList<ProfessorDataProps>) `
+
 `;
