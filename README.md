@@ -45,3 +45,22 @@ git add .
 git status
 git commit -m "setting themes and styles"
 git push -u origin master
+
+-- ajustes nos temas e no style
+-- add o TouchableOpacity na biblioteca do arquivo index.d.ts dentro da node_modules/@types/styled-components-react-native/index.d.ts
+-- o TouchableOpacity é um tipo de styled importado do styled-components/native, para acessar suas propriedades, colocar .attrs({ propriedade: valor})
+
+-- criar uma variável exportável type dentro de styles.ts e atribuir a um estilo, usando a sintaxe <variavel>
+-- agora ela precisa ser declarada (enviada) na build do componente pela Home
+-- no componente ela precisa ser importada do styles e atribuida na função do componente, em seguida enviada para o style que se deseja aplicar
+
+-- A home envia a propriedade para o compoenente, o componente recebe a propriedade previamente importada e envia pro style desejado
+
+-- importar o css dentro do styles.ts permite que façamos uma condicional de alterar mais itens do css de acordo com a variável comparada type
+
+git status
+git add .
+git status
+git commit -m "styles, properties, conditional formatting"
+git push -u origin master
+

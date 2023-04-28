@@ -1,10 +1,11 @@
 import { Container, Text } from './styles';
+import { Professor } from '../../components/professor';
 
 export function Home() {
     return (
         <Container>
             <Text>
-                HOME 2
+                <Professor type='primary'/>
             </Text>
         </Container>
     )

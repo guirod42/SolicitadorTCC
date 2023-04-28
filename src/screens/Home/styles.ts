@@ -8,10 +8,10 @@ export const Container = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-
-    background: ${({ theme }) => theme.colors.Background}
+    background: ${({ theme }) => theme.colors.Background};
 `;
 
 export const Text = styled.Text`
     font-size: 48px;
+    color: ${({ theme }) => theme.colors.Text_Prymary};
 `;

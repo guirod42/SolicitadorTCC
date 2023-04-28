@@ -7,9 +7,10 @@ export default {
         Primary_700: "#8F94A3",
 
         Info: '##FF9000',
+        Alert: '#FF0000',
 
-        Text_Prymary: '#080808',
-        Text_Secondary: '#FFF'
+        Text_Prymary: '#FFF', 
+        Text_Secondary: '#080808'
     }
 }
 /* Criar Token que o nome da cor não se refira à cor 
