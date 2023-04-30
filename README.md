@@ -130,3 +130,22 @@ git add .
 git status
 git commit -m "home and input design"
 git push -u origin master
+
+-- Refatorando os inputs
+-- importar nova biblioteca de icones
+
+npx yarn add react-native-vector-icons 
+
+-- ajustado o componente de textInput
+-- criar o alert no topo da tela, importar o useDispatch e o showToast na Home
+
+-- Botão criado, com definição de cor e funcionalidade de click
+-- Botão aceita os icones da biblioteca
+
+npm install -g dts-gen
+
+git status
+git add .
+git status
+git commit -m "home and input design pt2"
+git push -u origin master

@@ -6,8 +6,10 @@ export default {
         Primary_800: "#323644",
         Primary_700: "#8F94A3",
 
-        Info: '#1D90F5',
+        Info: '#0000FF',
         Alert: '#FF0000',
+
+        Principal_001: '#000080',
 
         Text_Prymary: '#080808',
         Text_Secondary: '#FFF'

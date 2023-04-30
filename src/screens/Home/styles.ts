@@ -1,7 +1,7 @@
-import { FlatList , FlatListProps } from 'react-native';
+import { FlatList, FlatListProps } from 'react-native';
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     /*justify-content: center;*/
@@ -16,12 +16,19 @@ export const Logo = styled.Image`
 export const Title = styled.Text`
     margin-top: 7px;
     font-size: 28px;
-    color: ${({ theme }) => theme.colors.Info};
+    color: ${({ theme }) => theme.colors.Principal_001};
     text-align: center;
     font-weight: 700;
     padding: 0 24px 16px;
 `;
 
-export const User = styled.TextInput`
-    
+export const Touch = styled.TouchableOpacity`
+`;
+
+export const SingUp = styled.Text`
+    color: ${({ theme }) => theme.colors.Info};
+    margin-top: 7px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 700;
 `;

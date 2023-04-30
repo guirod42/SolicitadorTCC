@@ -9,6 +9,8 @@ export default {
         Info: '##FF9000',
         Alert: '#FF0000',
 
+        Principal_001: '#000080',
+        
         Text_Prymary: '#FFF',
         Text_Secondary: '#080808'
     }

@@ -1,45 +1,79 @@
+import React, {
+    useState,
+    createRef,
+    useEffect,
+    useRef,
+} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
     Container,
     Logo,
-    Title
+    Title,
+    Touch,
+    SingUp
 } from './styles';
-import { InputText } from '../../components/Input';
+import { dtsGenerator } from 'dts-gen';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 export function Home() {
-    const Image = require('../../images/Uniaraxa.png');
     const navigation = useNavigation();
+    const Image = require('../../images/Uniaraxa.png');
+    const [user, setUser] = useState('');
+    const [pass, setPass] = useState('');
 
-    /*
-    const data = [
-        {id: '1', photo: 'https://github.com/guirod42.png', name: 'Guilherme Silva Rodrigues', specialist: 'Estudante SIF'},
-        {id: '2', photo: 'https://github.com/guirod42.png', name: 'Guilherme Rodrigues', specialist: 'Estudante SIF'},
-        {id: '3', photo: 'https://github.com/guirod42.png', name: 'Guilherme Silva Rodrigues', specialist: 'Estudante SIF'},
-        {id: '4', photo: 'https://github.com/guirod42.png', name: 'Guilherme Rodrigues', specialist: 'Estudante SIF'},
-        {id: '5', photo: 'https://github.com/guirod42.png', name: 'Guilherme Silva Rodrigues', specialist: 'Estudante SIF'},
-        {id: '6', photo: 'https://github.com/guirod42.png', name: 'Guilherme Rodrigues', specialist: 'Estudante SIF'},
-        {id: '7', photo: 'https://github.com/guirod42.png', name: 'Guilherme Silva Rodrigues', specialist: 'Estudante SIF'},
-        {id: '8', photo: 'https://github.com/guirod42.png', name: 'Guilherme Rodrigues', specialist: 'Estudante SIF'},
-        {id: '9', photo: 'https://github.com/guirod42.png', name: 'Guilherme Silva Rodrigues', specialist: 'Estudante SIF'},
-        {id: '10', photo: 'https://github.com/guirod42.png', name: 'Guilherme Rodrigues', specialist: 'Estudante SIF'},
-    ]
-    */
+    const userInput = useRef<dtsGenerator<typeof Input>>(null);
+    const passInput = useRef<dtsGenerator<typeof Input>>(null);
+
+    useEffect(() => userInput.current?.resetError(), [user]);
+    useEffect(() => passInput.current?.resetError(), [pass]);
+
+    function teste() {
+        if (user === '') {
+            alert('erro de usuário');
+            userInput.current.focusOnError();
+            return
+        }
+
+        if (pass === '') {
+            alert('erro de senha');
+            passInput.current.focusOnError();
+            return
+        }
+    }
 
     return (
         <Container>
             <Logo source={Image} />
             <Title>{'Solicitação de TCC'}</Title>
-            <InputText
-                placeholder='Usuário'
-                iconLeft ='user'
-                iconRight='eyeo'
+            <Input
+                ref={userInput}
+                autoCorrect={false}
+                autoCapitalize="none"
+                iconName={"user"}
+                placeholder="Usuário"
+                value={user}
+                onChangeText={setUser}
             />
-            <InputText
-                placeholder='Senha'
-                iconLeft ='lock'
-                iconRight='eyeo'
+            <Input
+                ref={passInput}
+                autoCorrect={false}
+                autoCapitalize="none"
+                iconName={"lock"}
+                placeholder="Senha"
+                value={pass}
+                onChangeText={setPass}
                 secureTextEntry
             />
+
+            <Button color="green" title="Entrar" onPress={() => teste()} />
+
+            <Touch
+            >
+                <SingUp>
+                    {'Cadastre-se'}
+                </SingUp>
+            </Touch>
         </Container>
     )
 }

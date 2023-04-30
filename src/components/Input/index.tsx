@@ -1,47 +1,65 @@
-import React from 'react';
-import { TextInputProps } from 'react-native'
-import { AntDesign } from '@expo/vector-icons'
-import DefaultTheme from '../../theme/styled'
+import React, { 
+    useState, 
+    forwardRef, 
+    useImperativeHandle, 
+    createRef } from 'react';
+import { Feather } from '@expo/vector-icons'
 import {
     Container,
-    IconLeft,
-    IconRight,
+    Icon,
+    IconPass,
     StyledTextInput,
 } from "./styles";
 
-type IconName = "user" | "lock" | "mail" | "rest" | "form" | "link" |
-    "picture" | "table" | "filter" | "key" | "find" | "stepforward" |
-    "stepbackward" | "forward" | "banckward" | "caretright" | "eye" |
-    "eyeo"
+const Input = forwardRef((props: any, ref) => {
+    const [sec, setSec] = useState(props.secureTextEntry);
+    const [withLock] = useState(props.secureTextEntry);
+    const [error, setError] = useState(false);
+    const inputRef = createRef();
 
-interface InputProps extends TextInputProps {
-    iconLeft: IconName;
-    iconRight: IconName;
-}
+    useImperativeHandle(ref,() => ({
+        focusOnError(){
+            setError(true);
+            inputRef.current.focus();
+        },
+        resetError(){
+            setError(false);
+        }
+    }))
 
-export function InputText({
-    iconLeft,
-    iconRight,
-    placeholder,
-    secureTextEntry,
-    ...rest }: InputProps) {
     return (
         <Container>
             <StyledTextInput
-                placeholder={placeholder}
-                secureTextEntry={secureTextEntry}
+                ref={inputRef}
+                underlineColorAndroid='transparent'
+                placeholderTextColor={'#a0a0a0'}
+                borderAlert={error ? true : false}
+                lockIcon={withLock}
+                {...props}
+                secureTextEntry={sec}
             />
-            <IconLeft>
-                <AntDesign name={iconLeft} size={28} color="black" />
-            </IconLeft>
-            <IconRight>
-                <AntDesign
-                    name={iconRight}
-                    size={28}
+
+            <Icon>
+                <Feather
+                    name={props.iconName}
+                    size={30}
                     color="black"
                 />
-            </IconRight>
+            </Icon>
+
+            {props.secureTextEntry && (
+                <IconPass
+                    onPress={() => setSec(!sec)}
+                >
+                    <Feather
+                        name={sec ? "eye-off" : "eye"}
+                        size={30}
+                        color="black"
+                    />
+                </IconPass>
+            )}
         </Container>
     );
-};
+});
 
+export default Input;

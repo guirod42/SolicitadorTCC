@@ -1,43 +1,47 @@
 import styled, { css } from "styled-components/native";
-import { AntDesign } from '@expo/vector-icons';
-import { StyleSheet } from 'react-native';
-import { ViewProps, TextInputProps } from 'react-native';
 
-interface InputContainerProps extends ViewProps {}
-
-interface InputProps extends TextInputProps {
-  icon?: keyof typeof AntDesign.glyphMap;
+interface StyledTextInputProps {
+  borderAlert?: boolean;
+  lockIcon?: boolean;
 }
 
-export const Container = styled.View<InputContainerProps>`
+export const Container = styled.View`
   flex-direction: row;
-  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
-export const StyledTextInput = styled.TextInput`
-  border-color: ${({ theme }) => theme.colors.Text_Prymary};
+export const StyledTextInput = styled.TextInput<StyledTextInputProps>`
+  height: 50px;
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.Background};
+  padding-left: 50px;
+
+  padding-right: ${({ lockIcon }) => (
+    lockIcon ? '50px'
+    : '10px' )};
   border-radius: 8px;
-  border-width: 1px;
   font-size: 18px;
-  height: 40px;
-  margin-bottom: 8px;
-  width: 80%;
-  padding-left: 40px;
-  padding-right: 40px;
+  
+  border-color: ${({ borderAlert, theme }) => (
+    borderAlert ? theme.colors.Alert
+      : theme.colors.Text_Prymary)};
+  
+  border-width: ${({ borderAlert }) => (
+    borderAlert ? '2px'
+      : '1px' )};
 `;
 
-export const IconLeft = styled(AntDesign)`
+export const Icon = styled.View`
   position: absolute;
-  left: 6px;
-  top: 6px;
+  left: 10px;
+  top: 10px;
 `;
 
-export const IconRight = styled.TouchableOpacity`
+export const IconPass = styled.TouchableOpacity`
   position: absolute;
-  right: 6px;
-  top: 6px;
+  right: 10px;
+  top: 10px;
 `;
-
-export const styles = StyleSheet.create({
-  // ...
-});
