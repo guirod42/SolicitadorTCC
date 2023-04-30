@@ -77,7 +77,7 @@ git push -u origin master
 -- Para fazer a tipagem da FlatList, dentro do styles.ts
 export const List = styled(FlatList as new (props: FlatListProps<string>) => FlatList<string>) `
 `;
--- onde string pode ser um objeto complexo, mas que pra isso, pracisa ser criado e importado do componente
+-- Onde string pode ser um objeto complexo, mas que pra isso, pracisa ser criado e importado do componente
 
 -- FlatList renderizada
 
@@ -85,4 +85,48 @@ git status
 git add .
 git status
 git commit -m "deployment of a FlatList"
+git push -u origin master
+
+-- Inicio de modelagem da página Home para o projeto
+-- Importação da logo de dentro da pasta do projeto
+-- Instalar o navigation no projeto
+
+npx yarn add @react-navigation/native
+npx yarn add @react-navigation/stack
+
+-- Ajuste de pacotes e dendências para uso futuro: package.json
+
+  "dependencies": {
+    "@expo/webpack-config": "^0.17.0",
+    "@react-native-async-storage/async-storage": "1.17.11",
+    "@react-native-picker/picker": "2.4.2",
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/stack": "^6.3.16",
+    "@types/react-native": "~0.69.1",
+    "axios": "^1.3.4",
+    "expo": "^46.0.21",
+    "expo-status-bar": "~1.4.4",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-native": "0.69.9",
+    "react-native-gesture-handler": "~2.5.0",
+    "react-native-safe-area-context": "4.3.1",
+    "react-native-web": "~0.18.11",
+    "styled-components": "^5.3.10"
+  },
+  
+-- Formatação base do arquivo App.tsx PARA funcionar:
+NavigationContainer, o ThemeProvider, e o Stack.Navigator com importação da página Home
+
+npx expo install react-native-screens@~3.15.0
+npx yarn add @expo/vector-icons@13.0.0
+
+-- Inicio de criação do componente de textInput
+-- textInput base (componente criado), mas precisa finalizar a estilização do icone da 
+direita e fazer o toque do mesmo "funcionar"
+
+git status
+git add .
+git status
+git commit -m "home and input design"
 git push -u origin master

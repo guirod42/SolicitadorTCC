@@ -1,17 +1,27 @@
 import { FlatList , FlatListProps } from 'react-native';
 import styled from 'styled-components/native';
-import { ProfessorDataProps } from '../../components/professor'
-
-/* importar o styled com /native, fazer a tipagem do styled-component 
-e instalar a extensão vscode-styled-components */
 
 export const Container = styled.View`
     flex: 1;
     align-items: center;
-    justify-content: center;
+    /*justify-content: center;*/
     background: ${({ theme }) => theme.colors.Background};
 `;
 
-export const List = styled(FlatList as new (props: FlatListProps<ProfessorDataProps>) => FlatList<ProfessorDataProps>) `
+export const Logo = styled.Image`
+    height: 200px;
+    width: 200px;
+`;
 
+export const Title = styled.Text`
+    margin-top: 7px;
+    font-size: 28px;
+    color: ${({ theme }) => theme.colors.Info};
+    text-align: center;
+    font-weight: 700;
+    padding: 0 24px 16px;
+`;
+
+export const User = styled.TextInput`
+    
 `;
