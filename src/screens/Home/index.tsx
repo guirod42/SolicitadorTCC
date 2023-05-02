@@ -12,7 +12,6 @@ import {
     Touch,
     SingUp,
 } from './styles';
-import { dtsGenerator } from 'dts-gen';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Api from '../../apiService/api.js';
@@ -25,8 +24,8 @@ const Home = () => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
 
-    const userInput = useRef<dtsGenerator<typeof Input>>(null);
-    const passInput = useRef<dtsGenerator<typeof Input>>(null);
+    const userInput = useRef<typeof Input>(null);
+    const passInput = useRef<typeof Input>(null);
 
     useEffect(() => userInput.current?.resetError(), [user]);
     useEffect(() => passInput.current?.resetError(), [pass]);
@@ -34,13 +33,13 @@ const Home = () => {
     async function login() {
         if (user === '') {
             alert('Campo usuário está em branco');
-            userInput.current.focusOnError();
+            userInput?.current?.focusOnError();
             return
         }
 
         if (pass === '') {
             alert('Campo senha está em branco');
-            passInput.current.focusOnError();
+            passInput?.current?.focusOnError();
             return
         }
 
@@ -53,6 +52,8 @@ const Home = () => {
                     alert('Usuario e/ou senha inválido!');
                     passInput.current.focusOnError();
                     userInput.current.focusOnError();
+                    setPass('');
+                    setUser('');
                     return;
                 } else {
                     await AsyncStorage.setItem('@SistemaTCC:userName', response.data[0].nome);
@@ -86,7 +87,6 @@ const Home = () => {
 
     return (
         <Container>
-
             <Logo source={Image} />
             <Title>{'Sistema TCC'}</Title>
                 <Container>
