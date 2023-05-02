@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components/native";
 
-interface StyledTextInputProps {
+export interface StyledTextInputProps {
   borderAlert?: boolean;
   lockIcon?: boolean;
-}
+};
 
 export const Container = styled.View`
   flex-direction: row;
@@ -14,24 +14,22 @@ export const Container = styled.View`
 `;
 
 export const StyledTextInput = styled.TextInput<StyledTextInputProps>`
-  height: 50px;
-  flex: 1;
   background-color: ${({ theme }) => theme.colors.Background};
+  border-radius: 8px;
+  flex: 1;
+  font-size: 18px;
+  height: 50px;  
   padding-left: 50px;
 
-  padding-right: ${({ lockIcon }) => (
-    lockIcon ? '50px'
-    : '10px' )};
-  border-radius: 8px;
-  font-size: 18px;
-  
   border-color: ${({ borderAlert, theme }) => (
     borderAlert ? theme.colors.Alert
       : theme.colors.Text_Prymary)};
-  
   border-width: ${({ borderAlert }) => (
     borderAlert ? '2px'
-      : '1px' )};
+      : '1px')};
+  padding-right: ${({ lockIcon }) => (
+    lockIcon ? '50px'
+      : '10px')};
 `;
 
 export const Icon = styled.View`

@@ -2,7 +2,8 @@ import React, {
     useState, 
     forwardRef, 
     useImperativeHandle, 
-    createRef } from 'react';
+    createRef,
+    useRef } from 'react';
 import { Feather } from '@expo/vector-icons'
 import {
     Container,
@@ -15,12 +16,12 @@ const Input = forwardRef((props: any, ref) => {
     const [sec, setSec] = useState(props.secureTextEntry);
     const [withLock] = useState(props.secureTextEntry);
     const [error, setError] = useState(false);
-    const inputRef = createRef();
+    const inputRef = useRef<typeof StyledTextInput>(null);
 
     useImperativeHandle(ref,() => ({
         focusOnError(){
             setError(true);
-            inputRef.current.focus();
+            inputRef?.current?.focus();
         },
         resetError(){
             setError(false);

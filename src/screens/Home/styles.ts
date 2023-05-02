@@ -4,13 +4,14 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
-    /*justify-content: center;*/
+    justify-content: center;
     background: ${({ theme }) => theme.colors.Background};
 `;
 
 export const Logo = styled.Image`
     height: 200px;
     width: 200px;
+    margin-top: 30px
 `;
 
 export const Title = styled.Text`
@@ -31,4 +32,5 @@ export const SingUp = styled.Text`
     font-size: 18px;
     text-align: center;
     font-weight: 700;
+    margin-bottom: 30px;
 `;

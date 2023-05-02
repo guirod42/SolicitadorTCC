@@ -149,3 +149,11 @@ git add .
 git status
 git commit -m "home and input design pt2"
 git push -u origin master
+
+-- Criação das rotas das páginas, ajustes de layout
+
+git status
+git add .
+git status
+git commit -m "route creation, layout adjustments"
+git push -u origin master
