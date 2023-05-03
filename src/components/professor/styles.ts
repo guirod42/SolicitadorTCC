@@ -1,4 +1,4 @@
-import styled , { css } from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 export type ProfessorProps = {
     type: 'primary' | 'secondary';
@@ -11,7 +11,7 @@ export const Container = styled.TouchableOpacity.attrs({
     padding: 22px;
     border-radius: 7px;
     margin: 7px;
-    background-color: ${({ theme , type }) => type === 'primary' ? 'red' : 'green'};
+    background-color: ${({ theme, type }) => type === 'primary' ? 'red' : 'green'};
     /* condicional que muda a cor do background de acordo com o valor de type */
 
     align-items: center;

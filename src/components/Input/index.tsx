@@ -1,32 +1,35 @@
-import React, { 
-    useState, 
-    forwardRef, 
-    useImperativeHandle, 
-    createRef,
-    useRef } from 'react';
+import React, {
+    useState,
+    forwardRef,
+    useImperativeHandle,
+    useRef,
+} from 'react';
 import { Feather } from '@expo/vector-icons'
 import {
     Container,
     Icon,
     IconPass,
     StyledTextInput,
+    StyledTextInputProps
 } from "./styles";
+import { TextInputProps } from 'react-native';
 
-const Input = forwardRef((props: any, ref) => {
+const Input = forwardRef((props: StyledTextInputProps, ref) => {
     const [sec, setSec] = useState(props.secureTextEntry);
     const [withLock] = useState(props.secureTextEntry);
     const [error, setError] = useState(false);
-    const inputRef = useRef<typeof StyledTextInput>(null);
+    const inputRef = useRef<StyledTextInputProps>(null);
 
-    useImperativeHandle(ref,() => ({
-        focusOnError(){
+    function focusOnForm() {
+        if (inputRef.current) {
+            inputRef.current.onFocus();
             setError(true);
-            inputRef?.current?.focus();
-        },
-        resetError(){
-            setError(false);
         }
-    }))
+    }
+
+    useImperativeHandle(ref, () => ({
+        focusOnForm: focusOnForm,
+    }));
 
     return (
         <Container>

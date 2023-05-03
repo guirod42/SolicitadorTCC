@@ -12,11 +12,23 @@ import {
     Touch,
     SingUp,
 } from './styles';
+import { Switch } from 'react-native-gesture-handler';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Api from '../../apiService/api.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { propsStack } from '../../routes/Stack/Models';
+import * as Device from 'expo-device';
+import * as Notifications from 'expo-notifications';
+import { StyledTextInputProps } from "../../components/Input/styles";
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: true,
+      shouldSetBadge: true,
+    }),
+  });
 
 const Home = () => {
     const navigation = useNavigation<propsStack>()
@@ -24,11 +36,18 @@ const Home = () => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
 
-    const userInput = useRef<typeof Input>(null);
-    const passInput = useRef<typeof Input>(null);
+    const userInput = useRef();
+    const passInput = useRef();
+    //const userInput = useRef();
+    //const passInput = useRef();
 
-    useEffect(() => userInput.current?.resetError(), [user]);
-    useEffect(() => passInput.current?.resetError(), [pass]);
+    useEffect(() => {
+        if (userInput.current) {
+            userInput.current.resetError();
+        }
+      }, []);
+
+    useEffect(() => passInput?.current?.resetError(), [pass]);
 
     async function login() {
         if (user === '') {
@@ -50,10 +69,8 @@ const Home = () => {
                 resposta = response.data.length;
                 if (resposta == 0) {
                     alert('Usuario e/ou senha inválido!');
-                    passInput.current.focusOnError();
-                    userInput.current.focusOnError();
-                    setPass('');
-                    setUser('');
+                    userInput?.current?.focusOnError();
+                    passInput?.current?.focusOnError();
                     return;
                 } else {
                     await AsyncStorage.setItem('@SistemaTCC:userName', response.data[0].nome);
@@ -87,20 +104,20 @@ const Home = () => {
 
     return (
         <Container>
+            
             <Logo source={Image} />
             <Title>{'Sistema TCC'}</Title>
                 <Container>
                     <Input
-                        ref={userInput}
                         autoCorrect={false}
                         autoCapitalize="none"
                         iconName={"user"}
                         placeholder="Usuário"
                         value={user}
                         onChangeText={setUser}
-                    />
+                        ref={userInput}
+                        />
                     <Input
-                        ref={passInput}
                         autoCorrect={false}
                         autoCapitalize="none"
                         iconName={"lock"}
@@ -108,9 +125,10 @@ const Home = () => {
                         value={pass}
                         onChangeText={setPass}
                         secureTextEntry
+                        ref={passInput}
                     />
                 </Container>
-            <Button color="green" title="Entrar" onPress={() => login()} />
+            <Button color="green" title="Entrar A" onPress={() => login()} />
             <Touch onPress={() => navigation.navigate("RegistrationPage")}>
                 <SingUp>
                     {'Cadastre-se'}

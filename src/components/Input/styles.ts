@@ -1,8 +1,19 @@
 import styled, { css } from "styled-components/native";
+import { TextInputProps } from "react-native";
+import { ComponentProps, } from "react";
+import React from 'react';
 
-export interface StyledTextInputProps {
+type Props = ComponentProps<typeof Icon>;
+export type IconName = Props["name"];
+
+export interface StyledTextInputProps extends TextInputProps {
   borderAlert?: boolean;
   lockIcon?: boolean;
+  iconName?: IconName;
+  resetError(): void;
+  focusOnError(): void;
+  onFocus(): void;
+  ref?: React.RefObject<unknown>;
 };
 
 export const Container = styled.View`

@@ -120,6 +120,8 @@ NavigationContainer, o ThemeProvider, e o Stack.Navigator com importação da p�
 
 npx expo install react-native-screens@~3.15.0
 npx yarn add @expo/vector-icons@13.0.0
+npx yarn add @types/vector-icons
+npx yarn add @types/react-native-vector-icons
 
 -- Inicio de criação do componente de textInput
 -- textInput base (componente criado), mas precisa finalizar a estilização do icone da 
@@ -156,4 +158,22 @@ git status
 git add .
 git status
 git commit -m "route creation, layout adjustments"
+git push -u origin master
+
+-- Pacote do switch
+npx yarn add react-switch
+
+-- Ajustes da tematização e tipagem ts na pasta styles
+
+-- Pacotes de alerta
+npx yarn add expo-device
+npx yarn add expo-notifications
+npx yarn add expo-device@~4.3.0 expo-notifications@~0.16.1
+
+-- correções de tipagem dos inputs
+
+git status
+git add .
+git status
+git commit -m "lesson applications and corretions in Input"
 git push -u origin master
