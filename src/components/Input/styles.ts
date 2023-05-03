@@ -1,20 +1,12 @@
+import { TextInputProps, TextInput } from "react-native";
 import styled, { css } from "styled-components/native";
-import { TextInputProps } from "react-native";
-import { ComponentProps, } from "react";
-import React from 'react';
 
-type Props = ComponentProps<typeof Icon>;
-export type IconName = Props["name"];
-
-export interface StyledTextInputProps extends TextInputProps {
+export interface StyledTextInputProps extends TextInputProps, TextInput {
   borderAlert?: boolean;
   lockIcon?: boolean;
-  iconName?: IconName;
-  resetError(): void;
-  focusOnError(): void;
-  onFocus(): void;
-  ref?: React.RefObject<unknown>;
-};
+  focusOnError() : void;
+  resetError() : void;
+}
 
 export const Container = styled.View`
   flex-direction: row;
@@ -25,22 +17,24 @@ export const Container = styled.View`
 `;
 
 export const StyledTextInput = styled.TextInput<StyledTextInputProps>`
-  background-color: ${({ theme }) => theme.colors.Background};
-  border-radius: 8px;
+  height: 50px;
   flex: 1;
-  font-size: 18px;
-  height: 50px;  
+  background-color: ${({ theme }) => theme.colors.Background};
   padding-left: 50px;
 
+  padding-right: ${({ lockIcon }) => (
+    lockIcon ? '50px'
+    : '12px' )};
+  border-radius: 8px;
+  font-size: 18px;
+  
   border-color: ${({ borderAlert, theme }) => (
     borderAlert ? theme.colors.Alert
       : theme.colors.Text_Prymary)};
+  
   border-width: ${({ borderAlert }) => (
     borderAlert ? '2px'
-      : '1px')};
-  padding-right: ${({ lockIcon }) => (
-    lockIcon ? '50px'
-      : '10px')};
+      : '1px' )};
 `;
 
 export const Icon = styled.View`

@@ -138,9 +138,8 @@ git push -u origin master
 
 npx yarn add react-native-vector-icons 
 
--- ajustado o componente de textInput
--- criar o alert no topo da tela, importar o useDispatch e o showToast na Home
-
+-- Ajustado o componente de textInput
+-- Criar o alert no topo da tela, importar o useDispatch e o showToast na Home
 -- Botão criado, com definição de cor e funcionalidade de click
 -- Botão aceita os icones da biblioteca
 
@@ -170,10 +169,22 @@ npx yarn add expo-device
 npx yarn add expo-notifications
 npx yarn add expo-device@~4.3.0 expo-notifications@~0.16.1
 
--- correções de tipagem dos inputs
+-- Correções de tipagem dos inputs {deu erro}
 
 git status
 git add .
 git status
 git commit -m "lesson applications and corretions in Input"
+git push -u origin master
+
+-- Correções diversas de tipagem e incompatibilidade com a biblioteca 
+import { dtsGenerator } from 'dts-gen';
+
+-- Usando agora a biblioteca própria do react
+const userInput = React.createRef<StyledTextInputProps>();
+
+git status
+git add .
+git status
+git commit -m "bug fix in inputs"
 git push -u origin master

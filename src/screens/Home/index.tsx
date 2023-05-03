@@ -24,11 +24,11 @@ import { StyledTextInputProps } from "../../components/Input/styles";
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
-      shouldShowAlert: true,
-      shouldPlaySound: true,
-      shouldSetBadge: true,
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: true,
     }),
-  });
+});
 
 const Home = () => {
     const navigation = useNavigation<propsStack>()
@@ -36,29 +36,22 @@ const Home = () => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
 
-    const userInput = useRef();
-    const passInput = useRef();
-    //const userInput = useRef();
-    //const passInput = useRef();
+    const userInput = React.createRef<StyledTextInputProps>();
+    const passInput = React.createRef<StyledTextInputProps>();
 
-    useEffect(() => {
-        if (userInput.current) {
-            userInput.current.resetError();
-        }
-      }, []);
-
-    useEffect(() => passInput?.current?.resetError(), [pass]);
+    useEffect(() => userInput.current?.resetError, [user]);
+    useEffect(() => passInput.current?.resetError, [pass]);
 
     async function login() {
         if (user === '') {
             alert('Campo usuário está em branco');
-            userInput?.current?.focusOnError();
+            userInput.current?.focusOnError();
             return
         }
 
         if (pass === '') {
             alert('Campo senha está em branco');
-            passInput?.current?.focusOnError();
+            passInput.current?.focusOnError();
             return
         }
 
@@ -68,9 +61,11 @@ const Home = () => {
             async (response: any) => {
                 resposta = response.data.length;
                 if (resposta == 0) {
-                    alert('Usuario e/ou senha inválido!');
-                    userInput?.current?.focusOnError();
-                    passInput?.current?.focusOnError();
+                    setTimeout(() => {
+                        alert('Usuario e/ou senha inválido!');
+                    }, 200);
+                    userInput.current?.focusOnError();
+                    passInput.current?.focusOnError();
                     return;
                 } else {
                     await AsyncStorage.setItem('@SistemaTCC:userName', response.data[0].nome);
@@ -104,31 +99,31 @@ const Home = () => {
 
     return (
         <Container>
-            
+
             <Logo source={Image} />
             <Title>{'Sistema TCC'}</Title>
-                <Container>
-                    <Input
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        iconName={"user"}
-                        placeholder="Usuário"
-                        value={user}
-                        onChangeText={setUser}
-                        ref={userInput}
-                        />
-                    <Input
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        iconName={"lock"}
-                        placeholder="Senha"
-                        value={pass}
-                        onChangeText={setPass}
-                        secureTextEntry
-                        ref={passInput}
-                    />
-                </Container>
-            <Button color="green" title="Entrar A" onPress={() => login()} />
+            <Container>
+                <Input
+                    ref={userInput}
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    iconName={"user"}
+                    placeholder="Usuário"
+                    value={user}
+                    onChangeText={setUser}
+                />
+                <Input
+                    ref={passInput}
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    iconName={"lock"}
+                    placeholder="Senha"
+                    value={pass}
+                    onChangeText={setPass}
+                    secureTextEntry
+                />
+            </Container>
+            <Button color="green" title="Entrar" onPress={() => login()} />
             <Touch onPress={() => navigation.navigate("RegistrationPage")}>
                 <SingUp>
                     {'Cadastre-se'}
