@@ -18,7 +18,6 @@ import Button from '../../components/Button';
 import Api from '../../apiService/api.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { propsStack } from '../../routes/Stack/Models';
-import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { StyledTextInputProps } from "../../components/Input/styles";
 
@@ -35,22 +34,20 @@ const Home = () => {
     const Image = require('../../images/Uniaraxa.png');
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
-
+    
     const userInput = React.createRef<StyledTextInputProps>();
     const passInput = React.createRef<StyledTextInputProps>();
 
     useEffect(() => userInput.current?.resetError, [user]);
     useEffect(() => passInput.current?.resetError, [pass]);
 
-    async function login() {
+    async function searchUser() {
         if (user === '') {
-            alert('Campo usuário está em branco');
             userInput.current?.focusOnError();
             return
         }
 
         if (pass === '') {
-            alert('Campo senha está em branco');
             passInput.current?.focusOnError();
             return
         }
@@ -123,7 +120,7 @@ const Home = () => {
                     secureTextEntry
                 />
             </Container>
-            <Button color="green" title="Entrar" onPress={() => login()} />
+            <Button color="green" title="Entrar" onPress={() => searchUser()} />
             <Touch onPress={() => navigation.navigate("RegistrationPage")}>
                 <SingUp>
                     {'Cadastre-se'}

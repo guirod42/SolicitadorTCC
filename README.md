@@ -188,3 +188,11 @@ git add .
 git status
 git commit -m "bug fix in inputs"
 git push -u origin master
+
+-- Correções e ajustes
+
+git status
+git add .
+git status
+git commit -m "bug fix in inputs"
+git push

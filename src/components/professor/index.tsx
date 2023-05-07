@@ -16,7 +16,7 @@ export type ProfessorDataProps = {
 type Props = ProfessorProps & {
     data: ProfessorDataProps;
 }
-
+/*
 export function Professor({type , data, ...rest }: Props) {
     return (
         <Container type={ type } { ...rest}>
@@ -31,3 +31,4 @@ export function Professor({type , data, ...rest }: Props) {
         </Container>
     )
 }
+*/

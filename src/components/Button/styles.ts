@@ -8,7 +8,7 @@ export const ButtonStyle: ViewStyle = {
     width: '70%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 16
+    marginVertical: 10
   };
 
   export const TextButton = styled.Text`

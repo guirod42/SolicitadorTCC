@@ -9,7 +9,7 @@ export default createGlobalStyle`
   body {
     background: ${props => props.theme.colors.Background};
     font-size: 14px;
-    color: ${props => props.theme.colors.Text_Prymary};
+    color: ${props => props.theme.colors.Text_Primary};
     font-family: sans-serif;
   }
 `;

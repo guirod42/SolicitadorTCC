@@ -13,7 +13,7 @@ export default {
 
     Principal_001: '#000080',
 
-    Text_Prymary: '#080808',
+    Text_Primary: '#080808',
     Text_Secondary: '#FFF'
   },
 };

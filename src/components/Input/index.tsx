@@ -1,8 +1,8 @@
-import React, { 
-    useState, 
-    forwardRef, 
+import React, {
+    useState,
+    forwardRef,
     useImperativeHandle,
-     } from 'react';
+} from 'react';
 import { Feather } from '@expo/vector-icons'
 import {
     Container,
@@ -11,20 +11,22 @@ import {
     StyledTextInput,
     StyledTextInputProps,
 } from "./styles";
-import { Theme } from 'native-base';
+import { useTheme } from "styled-components/native";
+
 
 const Input = forwardRef((props: any, ref) => {
     const [sec, setSec] = useState(props.secureTextEntry);
     const [withLock] = useState(props.secureTextEntry);
     const [error, setError] = useState(false);
     const inputRef = React.createRef<StyledTextInputProps>();
-    
-    useImperativeHandle(ref,() => ({
-        focusOnError(){
+    const theme = useTheme();
+
+    useImperativeHandle(ref, () => ({
+        focusOnError() {
             setError(true);
             inputRef?.current?.onFocus;
         },
-        resetError(){
+        resetError() {
             setError(false);
         }
     }))
@@ -34,18 +36,19 @@ const Input = forwardRef((props: any, ref) => {
             <StyledTextInput
                 ref={[inputRef]}
                 underlineColorAndroid='transparent'
-                placeholderTextColor={'#a0a0a0'}
+                placeholderTextColor={theme.colors.Primary_700}
                 borderAlert={error ? true : false}
                 lockIcon={withLock}
                 {...props}
                 secureTextEntry={sec}
+                cursorColor={theme.colors.Text_Primary}
             />
 
             <Icon>
                 <Feather
                     name={props.iconName}
                     size={30}
-                    color={"black"}
+                    color={theme.colors.Text_Primary}
                 />
             </Icon>
 
@@ -56,12 +59,13 @@ const Input = forwardRef((props: any, ref) => {
                     <Feather
                         name={sec ? "eye-off" : "eye"}
                         size={30}
-                        color="black"
+                        color={theme.colors.Text_Primary}
                     />
                 </IconPass>
             )}
         </Container>
     );
 });
+
 
 export default Input;

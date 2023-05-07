@@ -16,7 +16,7 @@ declare module 'styled-components' {
   
       Principal_001: string;
   
-      Text_Prymary: string;
+      Text_Primary: string;
       Text_Secondary: string;
     }
   }

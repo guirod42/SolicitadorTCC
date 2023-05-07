@@ -1,11 +1,16 @@
-import { TextInputProps, TextInput } from "react-native";
 import styled, { css } from "styled-components/native";
+import { 
+  TextInputProps, 
+  TextInput, 
+  TextInputState,  } from "react-native";
 
-export interface StyledTextInputProps extends TextInputProps, TextInput {
+export interface StyledTextInputProps extends TextInput , TextInputProps {
   borderAlert?: boolean;
-  lockIcon?: boolean;
+  lockIcon?: boolean;  
   focusOnError() : void;
   resetError() : void;
+  heightChange?: boolean;
+  inputHigh?: number;
 }
 
 export const Container = styled.View`
@@ -17,20 +22,22 @@ export const Container = styled.View`
 `;
 
 export const StyledTextInput = styled.TextInput<StyledTextInputProps>`
-  height: 50px;
   flex: 1;
   background-color: ${({ theme }) => theme.colors.Background};
   padding-left: 50px;
-
-  padding-right: ${({ lockIcon }) => (
-    lockIcon ? '50px'
-    : '12px' )};
   border-radius: 8px;
   font-size: 18px;
   
+  height: ${({ heightChange, inputHigh }) => (
+    heightChange && inputHigh ? inputHigh + 28 + 'px' : '50px')};
+
+  padding-right: ${({ lockIcon }) => (
+    lockIcon ? '55px'
+    : '12px' )};
+  
   border-color: ${({ borderAlert, theme }) => (
     borderAlert ? theme.colors.Alert
-      : theme.colors.Text_Prymary)};
+      : theme.colors.Text_Primary)};
   
   border-width: ${({ borderAlert }) => (
     borderAlert ? '2px'
@@ -45,6 +52,6 @@ export const Icon = styled.View`
 
 export const IconPass = styled.TouchableOpacity`
   position: absolute;
-  right: 10px;
+  right: 15px;
   top: 10px;
 `;
