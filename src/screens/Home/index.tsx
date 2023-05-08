@@ -1,18 +1,15 @@
 import React, {
     useState,
-    createRef,
     useEffect,
-    useRef,
 } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
     Container,
     Logo,
     Title,
-    Touch,
     SingUp,
+    Touch
 } from './styles';
-import { Switch } from 'react-native-gesture-handler';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Api from '../../apiService/api.js';
@@ -34,7 +31,7 @@ const Home = () => {
     const Image = require('../../images/Uniaraxa.png');
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
-    
+
     const userInput = React.createRef<StyledTextInputProps>();
     const passInput = React.createRef<StyledTextInputProps>();
 
@@ -74,7 +71,9 @@ const Home = () => {
                                     navigation.navigate('RegistrationPage');
                                     return;
                                 }
-                                navigation.navigate('RegistrationPage');
+                                navigation.navigate('RequestPage',{
+                                    userId: (response.data[0].id),
+                                    userName: response.data[0].nome});
                                 return;
                             }).catch(err => console.log(err));
                             return;
@@ -96,31 +95,32 @@ const Home = () => {
 
     return (
         <Container>
-
             <Logo source={Image} />
             <Title>{'Sistema TCC'}</Title>
-            <Container>
-                <Input
-                    ref={userInput}
-                    autoCorrect={false}
-                    autoCapitalize="none"
-                    iconName={"user"}
-                    placeholder="Usuário"
-                    value={user}
-                    onChangeText={setUser}
-                />
-                <Input
-                    ref={passInput}
-                    autoCorrect={false}
-                    autoCapitalize="none"
-                    iconName={"lock"}
-                    placeholder="Senha"
-                    value={pass}
-                    onChangeText={setPass}
-                    secureTextEntry
-                />
-            </Container>
-            <Button color="green" title="Entrar" onPress={() => searchUser()} />
+            <Input
+                ref={userInput}
+                autoCorrect={false}
+                autoCapitalize="none"
+                iconName={"user"}
+                placeholder="Usuário"
+                value={user}
+                onChangeText={setUser}
+            />
+            <Input
+                ref={passInput}
+                autoCorrect={false}
+                autoCapitalize="none"
+                iconName={"lock"}
+                placeholder="Senha"
+                value={pass}
+                onChangeText={setPass}
+                secureTextEntry
+            />
+            <Button
+                color="green"
+                title="Entrar"
+                onPress={() => searchUser()} />
+
             <Touch onPress={() => navigation.navigate("RegistrationPage")}>
                 <SingUp>
                     {'Cadastre-se'}

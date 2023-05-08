@@ -13,10 +13,11 @@ import {
 } from "./styles";
 import { useTheme } from "styled-components/native";
 
-
 const Input = forwardRef((props: any, ref) => {
     const [sec, setSec] = useState(props.secureTextEntry);
     const [withLock] = useState(props.secureTextEntry);
+    const [textFlex] = useState(props.heightChange);    
+    const [inputHeight, setInputHeight] = useState(0);
     const [error, setError] = useState(false);
     const inputRef = React.createRef<StyledTextInputProps>();
     const theme = useTheme();
@@ -41,14 +42,21 @@ const Input = forwardRef((props: any, ref) => {
                 lockIcon={withLock}
                 {...props}
                 secureTextEntry={sec}
-                cursorColor={theme.colors.Text_Primary}
+                cursorColor={error ? 
+                    theme.colors.Alert 
+                    : theme.colors.Text_Primary}
+                multiline={textFlex}
+                onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
+                inputHigh={inputHeight}
             />
 
             <Icon>
                 <Feather
                     name={props.iconName}
                     size={30}
-                    color={theme.colors.Text_Primary}
+                    color={error ? 
+                        theme.colors.Alert 
+                        : theme.colors.Text_Primary}
                 />
             </Icon>
 
@@ -59,7 +67,9 @@ const Input = forwardRef((props: any, ref) => {
                     <Feather
                         name={sec ? "eye-off" : "eye"}
                         size={30}
-                        color={theme.colors.Text_Primary}
+                        color={error ? 
+                            theme.colors.Alert 
+                            : theme.colors.Text_Primary}
                     />
                 </IconPass>
             )}

@@ -2,19 +2,30 @@ export default {
   title: 'light',
 
   colors: {
-    Background: '#FFF',
+    Background: '#FFFFFF',
 
-    Primary_900: '#272A37',
-    Primary_800: '#323644',
-    Primary_700: '#8F94A3',
+    Primary_100: '#1A1A1A',
+    Primary_200: '#333333',
+    Primary_300: '#4D4D4D',
+    Primary_400: '#666666',
+    Primary_500: '#808080',
+    Primary_600: '#999999',
+    Primary_700: '#B3B3B3',
+    Primary_800: '#CCCCCC',
+    Primary_900: '#E6E6E6',
+
+    Alert: '#FF0000',
+    Success: '#00CC00',
 
     Info: '#0000FF',
-    Alert: '#FF0000',
-
+    
     Principal_001: '#000080',
 
-    Text_Primary: '#080808',
-    Text_Secondary: '#FFF'
+    Text_Primary: '#333333',
+    Text_Secondary: '#FFFFFF',
+
+    User_Type_1: '#0000A6',
+    User_Type_2: '#225912',
   },
 };
 

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components/native";
 import { 
   TextInputProps, 
   TextInput, 
-  TextInputState,  } from "react-native";
+} from "react-native";
 
 export interface StyledTextInputProps extends TextInput , TextInputProps {
   borderAlert?: boolean;
@@ -27,7 +27,7 @@ export const StyledTextInput = styled.TextInput<StyledTextInputProps>`
   padding-left: 50px;
   border-radius: 8px;
   font-size: 18px;
-  
+
   height: ${({ heightChange, inputHigh }) => (
     heightChange && inputHigh ? inputHigh + 28 + 'px' : '50px')};
 
