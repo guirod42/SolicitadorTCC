@@ -51,68 +51,69 @@ const RegistrationPage = () => {
     }
 
     async function checkRegistration() {
-        let validacoes = [];
-        let cadastroValido = true;
+        let validations = [];
+        let validRegistration = true;
         if (name.trim() === '') {
-            validacoes.push('Campo nome é obrigatório');
+            validations.push('Campo nome é obrigatório');
             nameInput.current?.focusOnError();
-            cadastroValido = false;
+            validRegistration = false;
         }
         if (email.trim() === '') {
-            validacoes.push('Campo e-mail é obrigatório');
+            validations.push('Campo e-mail é obrigatório');
             emailInput.current?.focusOnError();
-            cadastroValido = false;
+            validRegistration = false;
         }
         if (user.trim() === '') {
-            validacoes.push(`Campo ${userLogin} é obrigatório`);
+            validations.push(`Campo ${userLogin} é obrigatório`);
             userInput.current?.focusOnError();
-            cadastroValido = false;
+            validRegistration = false;
         }
         if (pass.trim() === '') {
-            validacoes.push('Campo senha é obrigatório');
+            validations.push('Campo senha é obrigatório');
             passInput.current?.focusOnError();
-            cadastroValido = false;
+            validRegistration = false;
         }
         if (passConf.trim() === '') {
-            validacoes.push('Repita a senha no segundo campo');
+            validations.push('Repita a senha no segundo campo');
             passConfInput.current?.focusOnError();
-            cadastroValido = false;
+            validRegistration = false;
         }
         if (pass.trim() != passConf) {
-            validacoes.push('Repita a mesma senha duas vezes');
+            validations.push('Repita a mesma senha duas vezes');
             passConfInput.current?.focusOnError();
-            cadastroValido = false;
+            validRegistration = false;
         }
-        let objValidacao = {
-            cadastroValido: cadastroValido,
-            validacoes: validacoes
+        let validCheck = {
+            validRegistration: validRegistration,
+            validations: validations
         };
-        return objValidacao;
+        return validCheck;
     }
 
     async function register() {
-        await checkRegistration().then(response => {
-            if (response.cadastroValido) {
-                let objNewPerson = {
-                    id: null,
-                    nome: name,
-                    email: email,
-                    login: user,
-                    password: pass,
-                    tipo: typeStudant ? 1 : 2
+        await checkRegistration()
+            .then(response => {
+                if (response.validRegistration) {
+                    let objNewPerson = {
+                        id: null,
+                        nome: name,
+                        email: email,
+                        login: user,
+                        password: pass,
+                        tipo: typeStudant ? 1 : 2
+                    }
+                    console.log(Api.post('/usuarios', objNewPerson));
+                    alert('Usuário Criado!');
+                    navigation.navigate('Home');
+                    return;
                 }
-                Api.post('/usuarios', objNewPerson);
-                alert('Usuário Criado!');
-                navigation.navigate('Home');
-                return;
-            }
-            else {
-                response.validacoes.forEach(item => {
-                    alert(item);
-                });
-                return;
-            }
-        }).catch(err => alert(err))
+                else {
+                    response.validations.forEach(item => {
+                        alert(item);
+                    });
+                    return;
+                }
+            }).catch(err => alert(err))
     };
 
     return (
@@ -167,7 +168,7 @@ const RegistrationPage = () => {
                 onPress={() => register()} />
             <Button
                 color={typeStudant ? theme.colors.User_Type_1 : theme.colors.User_Type_2}
-                title={"Não sou " + userType}
+                title={"Eu não sou " + userType}
                 onPress={() => changeType()} />
         </Container>
     )

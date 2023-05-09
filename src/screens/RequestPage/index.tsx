@@ -9,7 +9,6 @@ const RequestPage = () => {
     const navigation = useNavigation<propsStack>();
     const params = useRoute<RequestPageRouteProp>();
     const userid = params.params?.userId;
-
     const name = params.params?.userName;
 
     return (

@@ -29,8 +29,8 @@ Notifications.setNotificationHandler({
 const Home = () => {
     const navigation = useNavigation<propsStack>()
     const Image = require('../../images/Uniaraxa.png');
-    const [user, setUser] = useState('');
-    const [pass, setPass] = useState('');
+    const [user, setUser] = useState('Guilherme');
+    const [pass, setPass] = useState('12345');
 
     const userInput = React.createRef<StyledTextInputProps>();
     const passInput = React.createRef<StyledTextInputProps>();
@@ -49,44 +49,46 @@ const Home = () => {
             return
         }
 
-        let resposta = 0;
-
         await Api.get(`/usuarios?login=${user}&password=${pass}`).then(
-            async (response: any) => {
-                resposta = response.data.length;
-                if (resposta == 0) {
+            async (responseUser: any) => {
+                let i = responseUser.data.length;
+                if (i == 0) {
                     setTimeout(() => {
                         alert('Usuario e/ou senha inválido!');
-                    }, 200);
+                    }, 0);
                     userInput.current?.focusOnError();
                     passInput.current?.focusOnError();
                     return;
                 } else {
-                    await AsyncStorage.setItem('@SistemaTCC:userName', response.data[0].nome);
-                    await AsyncStorage.setItem('@SistemaTCC:userID', String(response.data[0].id));
+                    await AsyncStorage.setItem('@SistemaTCC:userName', responseUser.data[0].nome);
+                    await AsyncStorage.setItem('@SistemaTCC:userID', String(responseUser.data[0].id));
                     try {
-                        if (response.data[0].tipo == 1) {
-                            await Api.get("/solicitacoes?AlunoSolicitanteID=" + response.data[0].id).then(async (response) => {
+                        if (responseUser.data[0].tipo == 1) {
+                            await Api.get("/solicitacoes?AlunoSolicitanteID=" + responseUser.data[0].id).then(async (response) => {
                                 if (response.data.length > 0) {
-                                    navigation.navigate('RegistrationPage');
+                                    navigation.navigate('RequestPage', {
+                                        userId: responseUser.data[0].id,
+                                        userName: responseUser.data[0].nome
+                                    });
                                     return;
                                 }
-                                navigation.navigate('RequestPage',{
-                                    userId: (response.data[0].id),
-                                    userName: response.data[0].nome});
+                                navigation.navigate('RequestPage', {
+                                    userId: responseUser.data[0].id,
+                                    userName: responseUser.data[0].nome
+                                });
                                 return;
                             }).catch(err => console.log(err));
                             return;
                         }
-                        if (response.data[0].tipo == 2) {
+                        if (responseUser.data[0].tipo == 2) {
                             navigation.navigate('RegistrationPage');
                             return;
                         }
                         alert('Não está achando o tipo');
                         return;
                     }
-                    catch (error) {
-                        console.error(error);
+                    catch (err) {
+                        console.error(err);
                     }
                     return;
                 }
@@ -120,7 +122,6 @@ const Home = () => {
                 color="green"
                 title="Entrar"
                 onPress={() => searchUser()} />
-
             <Touch onPress={() => navigation.navigate("RegistrationPage")}>
                 <SingUp>
                     {'Cadastre-se'}
