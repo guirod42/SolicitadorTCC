@@ -30,6 +30,9 @@ npx expo install react-dom
 install @types/react-native@~0.69.1
 npx expo install react@18.0.0 react-native@0.69.9
 
+-- PARA YARN
+npx yarn add react@18.2.0
+
 - importar styled-components no arquivo styles.ts e instalar a tipagem do styled-components
 npx yarn add @types/styled-components-react-native -D
 - O -D significa que é uma dependência de Desenvolvimento
@@ -196,3 +199,29 @@ git add .
 git status
 git commit -m "bug fix in inputs"
 git push
+
+-- Ajustes de navegação e correção de itens diversos
+
+git status
+git add .
+git status
+git commit -m "Miscellaneous fixes and navigation improvements"
+git push
+
+-- Ajustes de nomeclatura e outros
+
+git status
+git add .
+git status
+git commit -m "GetByAno and others"
+git push
+
+-- Configurações de notificação
+-- Associação do projeto com o sistema do expo
+npm install --global eas-cli
+eas init --id 13db2ed3-5d89-4606-af5e-939006deb4fe
+
+-- instalação do sistema da câmera
+yarn add expo-camera@~12.5.0
+
+-- Elaborado e montado o componente de Loading

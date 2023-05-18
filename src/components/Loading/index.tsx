@@ -1,11 +1,31 @@
+import { StyleSheet, ActivityIndicator, View } from 'react-native';
 import React from 'react';
-import { Container } from './styles';
-import { Text } from 'react-native';
+import { Modal } from 'react-native';
 
-export default function Loading() {
-	return (
-		<Container>
-			<Text>teste</Text>
-		</Container>
-	)		
+interface LoadingProps {
+    active: boolean
 }
+
+const Loading = (props: LoadingProps) => {
+    return (
+        <Modal transparent visible={props.active}>
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator
+                    size="large"
+                    color="black"
+                    animating={true}
+                />
+            </View>
+        </Modal>
+    );
+}
+
+const styles = StyleSheet.create({
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignContent: "center",
+    }
+});
+
+export default Loading;

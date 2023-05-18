@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SolicitadorTCC",
-    "slug": "SolicitadorTCC",
+    "slug": "solicitadortcc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,20 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "13db2ed3-5d89-4606-af5e-939006deb4fe"
+      }
+    },
+    "owner": "guirod42",
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+        }
+      ]
+    ]
   }
 }

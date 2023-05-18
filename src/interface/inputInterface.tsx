@@ -1,6 +1,7 @@
 import { TextInput } from "react-native-gesture-handler";
+import { NotificationContentInput } from "expo-notifications";
 
-export interface TextInputProps extends TextInput  {
+export interface StylesNotificationBody extends NotificationContentInput {
     borderAlert?: boolean;
     lockIcon?: boolean;
     focus(): void;
