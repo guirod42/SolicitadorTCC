@@ -1,46 +1,68 @@
+import { TouchableOpacityProps } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export type ProfessorProps = {
-    type: 'primary' | 'secondary';
-}
-
-export const Container = styled.TouchableOpacity.attrs({
-    activeOpacity: 0.7
-}) <ProfessorProps>`
-    width: 45%;
-    padding: 22px;
-    border-radius: 7px;
-    margin: 7px;
-    background-color: ${({ theme, type }) => type === 'primary' ? 'red' : 'green'};
-    /* condicional que muda a cor do background de acordo com o valor de type */
-
+export interface ProfessorDataProps extends TouchableOpacityProps{
+    id: string;
+    nome: string;
+    email: string;
+    imagem: string;
+    onPress(): void;
+  };
+  
+export const Container = styled.View`
     align-items: center;
-    justify-content: center;
+    border-color: ${({ theme }) => theme.colors.Primary_100};
+    border-radius: 8px;
+    border-width: 1px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 5px;
+    width: 90%;
+`;
 
-    ${({ type, theme }) => type === 'primary' && css`
-        border: 5px;
-        border-color: ${theme.colors.Text_Prymary}
-    `};
-    /* condicional que muda mais de uma propriedade de css de acordo com o valor de type */
+export const Data = styled.View`
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 50%;
+`
+
+export const Title = styled.Text`
+    font-size: 16px;
+    text-align: left;
+    font-weight: bold;
+`;
+
+export const SubTitle = styled.Text`
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 15px;
 `;
 
 export const Photo = styled.Image`
-    height: 90px;
-    width: 90px;
-    border-radius: 45px;
+    border-radius: 35px;
+    height: 70px;
+    width: 70px;
 `;
 
-export const Name = styled.Text`
-    margin-top: 7px;
+export const PhotoSpace = styled.View`
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    width: 20%;
+`;
+
+export const Select = styled.Text`
     font-size: 18px;
-    color: ${({ theme }) => theme.colors.Text_Prymary};
-    text-align: center;
-    font-weight: 700;
-`;
+    font-weight: bold;
+`
 
-export const Specialist = styled.Text`
-    margin-top: 3px;
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.Text_Prymary};
-    text-align: center;
+export const SelectSpace = styled.TouchableOpacity`
+    align-items: center;
+    background-color: ${({theme})=> theme.colors.Success};
+    border-radius: 15px;
+    height: 30px;
+    justify-content: center;
+    margin: 15px;
+    width: 30px;
 `;

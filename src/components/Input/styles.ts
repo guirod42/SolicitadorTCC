@@ -29,7 +29,7 @@ export const StyledTextInput = styled.TextInput<StyledTextInputProps>`
   font-size: 18px;
 
   height: ${({ heightChange, inputHigh }) => (
-    heightChange && inputHigh ? inputHigh + 28 + 'px' : '50px')};
+    heightChange && inputHigh ? inputHigh + 26 + 'px' : '50px')};
 
   padding-right: ${({ lockIcon }) => (
     lockIcon ? '55px'

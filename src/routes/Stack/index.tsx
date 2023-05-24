@@ -9,9 +9,9 @@ const { Navigator, Screen } = createNativeStackNavigator<propsNavigationStack>()
 
 export default function () {
     return (
-        <Navigator 
-            initialRouteName="Home" 
-            screenOptions={{headerShown: false}}>
+        <Navigator
+            initialRouteName="Home"
+            screenOptions={{ headerShown: false }} >
             <Screen name="Home" component={Home} />
             <Screen name="RegistrationPage" component={RegistrationPage} />
             <Screen name="RequestPage" component={RequestPage} />

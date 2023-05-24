@@ -74,7 +74,6 @@ const Home = () => {
     }, [])
 
     const handleTokenPush = async () => {
-
         const { status } = await Notifications.getPermissionsAsync();
         if (status != 'granted') {
             alert('Sem permissão de notificação');
@@ -122,6 +121,7 @@ const Home = () => {
                                         });
                                         return;
                                     }
+                                    // handleCallNotification(); // CHAMA A NOTIFICAÇÃO
                                     navigation.navigate('RequestPage', {
                                         userId: responseUser.data[0].id,
                                         userName: responseUser.data[0].nome
@@ -144,7 +144,7 @@ const Home = () => {
                     }
                 }
             ).catch(error => alert(error));
-            
+
         setLoading(false);
     }
 
@@ -187,15 +187,15 @@ const Home = () => {
                 color="black"
                 title="Load"
                 onPress={() => setLoading(!flLoading)} />
-            <Button
-                color="black"
-                title="Token"
-                onPress={() => handleCallNotification()} />
-            <Button
+                <Button
                 color="pink"
                 title="Camera"
                 onPress={() => toggleCameraType()} />
             */}
+            <Button
+                color="black"
+                title="Token"
+                onPress={() => handleCallNotification()} />
             <SingUp>
                 {notificationTitle}
             </SingUp>

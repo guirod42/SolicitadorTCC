@@ -1,34 +1,37 @@
+import React, { forwardRef, useState } from 'react';
 import {
     Container,
+    Title,
+    SubTitle,
     Photo,
-    Name,
-    Specialist,
-    ProfessorProps
+    PhotoSpace,
+    Data,
+    Select,
+    SelectSpace,
+    ProfessorDataProps
 } from "./styles";
 
-export type ProfessorDataProps = {
-    id: string,
-    photo: string,
-    name: string,
-    specialist: string,
-}
+const Professor = forwardRef((props: ProfessorDataProps, ref) => {
+    const handlePress = () => {
+        if (props.onPress) {
+            props.onPress();
+        }
+    };
 
-type Props = ProfessorProps & {
-    data: ProfessorDataProps;
-}
-/*
-export function Professor({type , data, ...rest }: Props) {
     return (
-        <Container type={ type } { ...rest}>
-            <Photo source={{uri: data.photo}}
-            />
-            <Name>
-                {data.name}
-            </Name>
-            <Specialist>
-                {data.specialist}
-            </Specialist>
+        <Container>
+            <PhotoSpace>
+                <Photo source={{ uri: props.imagem }} />
+            </PhotoSpace>
+            <Data>
+                <Title>{props.nome}</Title>
+                <SubTitle>{props.email}</SubTitle>
+            </Data>
+            <SelectSpace onPress={handlePress}>
+                <Select>{'+'}</Select>
+            </SelectSpace>
         </Container>
-    )
-}
-*/
+    );
+});
+
+export default Professor;
