@@ -2,8 +2,8 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { propsNavigationStack } from "./Models";
 import Home from '../../screens/Home'
-import RegistrationPage from '../../screens/RegistrationPage'
-import RequestPage from "../../screens/RequestPage";
+import Registration from '../../screens/RegistrationPage'
+import Request from "../../screens/RequestPage";
 
 const { Navigator, Screen } = createNativeStackNavigator<propsNavigationStack>()
 
@@ -13,8 +13,8 @@ export default function () {
             initialRouteName="Home"
             screenOptions={{ headerShown: false }} >
             <Screen name="Home" component={Home} />
-            <Screen name="RegistrationPage" component={RegistrationPage} />
-            <Screen name="RequestPage" component={RequestPage} />
+            <Screen name="Registration" component={Registration} />
+            <Screen name="Request" component={Request} />
         </Navigator>
     )
 }

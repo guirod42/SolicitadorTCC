@@ -17,7 +17,7 @@ import Api from '../../apiService/api.js';
 import { StyledTextInputProps } from "../../components/Input/styles";
 import { useTheme } from "styled-components/native";
 
-const RegistrationPage = () => {
+const Registration = () => {
     const navigation = useNavigation<propsStack>()
     const Image = require('../../images/Uniaraxa.png');
     const [name, setName] = useState('');
@@ -174,4 +174,4 @@ const RegistrationPage = () => {
     )
 }
 
-export default RegistrationPage;
+export default Registration;

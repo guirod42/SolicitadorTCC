@@ -9,12 +9,12 @@ import Api from "../../apiService/api";
 import Input from '../../components/Input';
 import { StyledTextInputProps } from "../../components/Input/styles";
 import Button from '../../components/Button';
-type RequestPageRouteProp = RouteProp<propsNavigationStack, 'RequestPage'>;
+type RequestRouteProp = RouteProp<propsNavigationStack, 'Request'>;
 import { useTheme } from "styled-components/native";
 
-const RequestPage = () => {
+const Request = () => {
     const navigation = useNavigation<propsStack>();
-    const params = useRoute<RequestPageRouteProp>();
+    const params = useRoute<RequestRouteProp>();
     const userid = params.params?.userId;
     const name = params.params?.userName;
     const [chosenProfessor, setChosenProfessor] = useState<ProfessorDataProps>();
@@ -121,4 +121,4 @@ const RequestPage = () => {
     );
 }
 
-export default RequestPage;
+export default Request;
