@@ -4,7 +4,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { Text } from "react-native";
 import { Container, List, Title, SubTitle } from "./styles";
 import Professor from "../../components/Professor";
-import { ProfessorDataProps } from "./../../components/Professor/styles"
+import { ProfessorDataProps } from "../../components/Professor/styles"
 import Api from "../../apiService/api";
 import Input from '../../components/Input';
 import { StyledTextInputProps } from "../../components/Input/styles";

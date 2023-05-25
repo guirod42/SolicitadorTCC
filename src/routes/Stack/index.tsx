@@ -2,8 +2,8 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { propsNavigationStack } from "./Models";
 import Home from '../../screens/Home'
-import Registration from '../../screens/RegistrationPage'
-import Request from "../../screens/RequestPage";
+import Registration from '../../screens/Registration'
+import Request from "../../screens/Request";
 
 const { Navigator, Screen } = createNativeStackNavigator<propsNavigationStack>()
 
