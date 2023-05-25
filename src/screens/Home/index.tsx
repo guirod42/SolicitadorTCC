@@ -115,14 +115,14 @@ const Home = () => {
                             if (responseUser.data[0].tipo == 1) {
                                 await Api.get("/solicitacoes?AlunoSolicitanteID=" + responseUser.data[0].id).then(async (response) => {
                                     if (response.data.length > 0) {
-                                        navigation.navigate('RequestPage', {
+                                        navigation.navigate('Request', {
                                             userId: responseUser.data[0].id,
                                             userName: responseUser.data[0].nome
                                         });
                                         return;
                                     }
                                     // handleCallNotification(); // CHAMA A NOTIFICAÇÃO
-                                    navigation.navigate('RequestPage', {
+                                    navigation.navigate('Request', {
                                         userId: responseUser.data[0].id,
                                         userName: responseUser.data[0].nome
                                     });
@@ -131,7 +131,7 @@ const Home = () => {
                                 return;
                             }
                             if (responseUser.data[0].tipo == 2) {
-                                navigation.navigate('RegistrationPage');
+                                navigation.navigate('Registration');
                                 return;
                             }
                             alert('Não está achando o tipo');
@@ -176,7 +176,7 @@ const Home = () => {
                 color="green"
                 title="Entrar"
                 onPress={() => searchUser()} />
-            <Touch onPress={() => navigation.navigate("RegistrationPage")}>
+            <Touch onPress={() => navigation.navigate("Registration")}>
                 <SingUp>
                     {'Cadastre-se'}
                 </SingUp>
