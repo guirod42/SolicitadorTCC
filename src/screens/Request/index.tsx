@@ -64,6 +64,7 @@ const Request = () => {
                         placeholder="Buscar professor..."
                         value={search}
                         onChangeText={setSearch}
+                        
                     />
                     {filteredProfessors.length > 0 ? (
                         <List
@@ -97,7 +98,6 @@ const Request = () => {
                         placeholder="Título da proposta"
                         value={title}
                         onChangeText={setTitle}
-
                     />
 
                     <SubTitle>{'Descrição'}</SubTitle>
@@ -109,7 +109,7 @@ const Request = () => {
                         placeholder="Descrição da proposta"
                         value={description}
                         onChangeText={setDescription}
-                        heightChange={false}
+                        heightChange={true}
                     />
                     <Button
                         color={theme.colors.Alert}

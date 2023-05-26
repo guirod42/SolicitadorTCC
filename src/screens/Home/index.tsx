@@ -92,11 +92,13 @@ const Home = () => {
         setLoading(true);
         if (user === '') {
             userInput.current?.focusOnError();
+            setLoading(false);
             return
         }
 
         if (pass === '') {
             passInput.current?.focusOnError();
+            setLoading(false);
             return
         }
         await Api.get(`/usuarios?login=${user}&password=${pass}`)
@@ -107,6 +109,7 @@ const Home = () => {
                         alert('Usuario e/ou senha inválido!');
                         userInput.current?.focusOnError();
                         passInput.current?.focusOnError();
+                        setLoading(false);
                         return;
                     } else {
                         await AsyncStorage.setItem('@SistemaTCC:userName', responseUser.data[0].nome);
@@ -115,10 +118,11 @@ const Home = () => {
                             if (responseUser.data[0].tipo == 1) {
                                 await Api.get("/solicitacoes?AlunoSolicitanteID=" + responseUser.data[0].id).then(async (response) => {
                                     if (response.data.length > 0) {
-                                        navigation.navigate('Request', {
+                                        navigation.navigate('Student', {
                                             userId: responseUser.data[0].id,
                                             userName: responseUser.data[0].nome
                                         });
+                                        setLoading(false);
                                         return;
                                     }
                                     // handleCallNotification(); // CHAMA A NOTIFICAÇÃO
@@ -126,27 +130,42 @@ const Home = () => {
                                         userId: responseUser.data[0].id,
                                         userName: responseUser.data[0].nome
                                     });
+                                    setLoading(false);
                                     return;
                                 }).catch(error => console.log(error));
+                                setLoading(false);
                                 return;
                             }
                             if (responseUser.data[0].tipo == 2) {
-                                navigation.navigate('Registration');
+                                navigation.navigate('Professor', {
+                                    userId: responseUser.data[0].id,
+                                    userName: responseUser.data[0].nome
+                                });
+                                setLoading(false);
                                 return;
                             }
                             alert('Não está achando o tipo');
+                            setLoading(false);
                             return;
                         }
                         catch (error) {
                             console.log(error);
                         }
+                        setLoading(false);
                         return;
                     }
                 }
-            ).catch(error => alert(error));
-
+            ).catch(error => console.log(error));
         setLoading(false);
+        return;
     }
+
+
+function changeUserTest(){
+    if (user == 'Guilherme') {setUser("Carlos"), setPass("12345")}
+    else if (user == 'Carlos') {setUser("Humberto"), setPass("123")}
+    else {setUser("Guilherme"), setPass("12345")}   
+}
 
     return (
         <Container>
@@ -199,6 +218,11 @@ const Home = () => {
             <SingUp>
                 {notificationTitle}
             </SingUp>
+
+            <Button
+                color="black"
+                title="Change User Test"
+                onPress={() => changeUserTest()} />
         </Container>
     )
 }

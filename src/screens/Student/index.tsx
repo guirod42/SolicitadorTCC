@@ -8,9 +8,11 @@ import {
     Container
 } from './styles';
 import Api from '../../apiService/api.js';
+import { propsStack } from '../../routes/Stack/Models';
 
 const Student = () => {
 
+    const navigation = useNavigation<propsStack>();
     useEffect(() => {
 
     }, [])

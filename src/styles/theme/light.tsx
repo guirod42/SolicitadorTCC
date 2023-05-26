@@ -26,6 +26,9 @@ export default {
 
     User_Type_1: '#0000A6',
     User_Type_2: '#225912',
+
+    //Component_Color_001: 
+
   },
 };
 
