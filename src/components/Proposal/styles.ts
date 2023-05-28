@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components/native";
-  
+import styled from "styled-components/native";
+
 export const Container = styled.View`
     align-items: center;
     border-color: ${({ theme }) => theme.colors.Primary_100};
@@ -12,3 +12,15 @@ export const Container = styled.View`
     width: 90%;
 `;
 
+export const Photo = styled.Image`
+    border-radius: 35px;
+    height: 70px;
+    width: 70px;
+`;
+
+export const PhotoSpace = styled.View`
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    width: 20%;
+`;

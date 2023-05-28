@@ -1,14 +1,20 @@
 import React, { forwardRef, useState } from 'react';
 import {
-    Container
+    Container,
+    PhotoSpace,
+    Photo,
 } from "./styles";
 
-const Proposal = forwardRef((props: any, ref) => {
+const Proposal = () => {
+    let defaultImage: string = "https://sec.uniaraxa.edu.br/assets/lms/Pessoa/default.jpg";
+
     return (
         <Container>
-            
+            <PhotoSpace>
+                <Photo source={{ uri: defaultImage }} />
+            </PhotoSpace>
         </Container>
-        );
-});
+    );
+};
 
 export default Proposal;

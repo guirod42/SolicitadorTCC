@@ -2,11 +2,11 @@ import { StyleSheet, ActivityIndicator, View } from 'react-native';
 import React from 'react';
 import { Modal } from 'react-native';
 
-interface LoadingProps {
+interface StykedLoadingProps {
     active: boolean
 }
 
-const Loading = (props: LoadingProps) => {
+const Loading = (props: StykedLoadingProps) => {
     return (
         <Modal transparent visible={props.active}>
             <View style={styles.loadingContainer}>

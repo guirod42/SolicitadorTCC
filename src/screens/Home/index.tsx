@@ -2,7 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { useNavigation } from '@react-navigation/native';
 import { StyledTextInputProps } from "../../components/Input/styles";
 import { Camera, CameraType } from 'expo-camera';
-import { StylesNotificationBody } from '../../interface/inputInterface';
+import { StyledNotificationBody } from '../../interface/inputInterface';
 import { propsStack } from '../../routes/Stack/Models';
 import React, {
     useState,
@@ -37,7 +37,7 @@ const Home = () => {
     const passInput = React.createRef<StyledTextInputProps>();
     const notificationReceivedRef = useRef<any>();
     const notificationResponseRef = useRef<any>();
-    const stylesNotification = useRef<StylesNotificationBody>();
+    const stylesNotification = useRef<StyledNotificationBody>();
     const [flLoading, setLoading] = useState<boolean>(false)
     const [user, setUser] = useState<string>('Guilherme');
     const [pass, setPass] = useState<string>('12345');
@@ -49,7 +49,7 @@ const Home = () => {
     useEffect(() => userInput.current?.resetError, [user]);
     useEffect(() => passInput.current?.resetError, [pass]);
 
-    async function handleCallNotification(props?: StylesNotificationBody) {
+    async function handleCallNotification(props?: StyledNotificationBody) {
         await Notifications.scheduleNotificationAsync({
             content: {
                 title: 'Título da notificação',

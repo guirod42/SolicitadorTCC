@@ -1,9 +1,7 @@
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
 import React, {
-    useState,
     useEffect,
-    useRef,
 } from 'react';
 import {
     Container,

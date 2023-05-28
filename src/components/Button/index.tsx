@@ -3,13 +3,13 @@ import { StyleProp, TouchableOpacity, TouchableOpacityProps, ViewStyle } from 'r
 
 import { ButtonStyle, TextButton } from './styles';
 
-interface ButtonProps extends TouchableOpacityProps {
+interface StyledButtonProps extends TouchableOpacityProps {
   color: string;
   title: string;
   buttonStyle?: StyleProp<ViewStyle>;
 }
 
-const Button = forwardRef((props: ButtonProps, ref: Ref<TouchableOpacity>) => {
+const Button = forwardRef((props: StyledButtonProps, ref: Ref<TouchableOpacity>) => {
   const { color, title, buttonStyle, ...rest } = props;
   return (
     <TouchableOpacity

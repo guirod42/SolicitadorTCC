@@ -13,6 +13,7 @@ import {
 } from './styles';
 import Api from '../../apiService/api.js';
 import Button from '../../components/Button';
+import Proposal from '../../components/Proposal';
 
 type RequestRouteProp = RouteProp<propsNavigationStack, 'Professor'>;
 
@@ -34,6 +35,10 @@ const Professor = () => {
     return (
         <Container>
             <Title>{'Página do Professor ' + name}</Title>
+            <Proposal/>
+            <Proposal/>
+            <Proposal/>
+            
             <Button
                 color="green"
                 title="Abrir perfil"
