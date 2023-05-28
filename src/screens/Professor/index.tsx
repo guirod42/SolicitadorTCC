@@ -1,9 +1,11 @@
+import * as Notifications from 'expo-notifications';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
 import React, {
-    useState,
     useEffect,
+    useState,
     useRef,
 } from 'react';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import {
     Container,
     Title,
@@ -11,8 +13,8 @@ import {
 } from './styles';
 import Api from '../../apiService/api.js';
 import Button from '../../components/Button';
+
 type RequestRouteProp = RouteProp<propsNavigationStack, 'Professor'>;
-import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
 
 const Professor = () => {
     const navigation = useNavigation<propsStack>();
@@ -23,16 +25,15 @@ const Professor = () => {
 
     }, [])
 
-    function seeProfile(){
+    function seeProfile() {
         navigation.navigate('UserProfile', {
             userId: userid,
         });
     }
 
-
     return (
         <Container>
-            <Title>{'Página do Professor '+ name}</Title>
+            <Title>{'Página do Professor ' + name}</Title>
             <Button
                 color="green"
                 title="Abrir perfil"

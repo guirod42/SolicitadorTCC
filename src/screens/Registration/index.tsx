@@ -1,21 +1,19 @@
-import React, {
-    useState,
-    createRef,
-    useEffect,
-    useRef,
-} from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { StyledTextInputProps } from "../../components/Input/styles";
+import { propsStack } from '../../routes/Stack/Models';
+import { useTheme } from "styled-components/native";
+import React, {
+    useEffect,
+    useState,
+} from 'react';
 import {
     Container,
     Logo,
     Title,
 } from './styles';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import { propsStack } from '../../routes/Stack/Models';
 import Api from '../../apiService/api.js';
-import { StyledTextInputProps } from "../../components/Input/styles";
-import { useTheme } from "styled-components/native";
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 const Registration = () => {
     const navigation = useNavigation<propsStack>()
@@ -122,54 +120,61 @@ const Registration = () => {
             <Title>Cadastro de {userType}</Title>
             <Input
                 ref={nameInput}
-                autoCorrect={false}
                 autoCapitalize="none"
+                autoCorrect={false}
                 iconName={"user"}
                 placeholder="Nome completo"
+                onChangeText={setName}
                 value={name}
-                onChangeText={setName} />
+            />
             <Input
                 ref={emailInput}
-                autoCorrect={false}
                 autoCapitalize="none"
+                autoCorrect={false}
                 iconName={"mail"}
                 placeholder="E-mail"
+                onChangeText={setEmail}
                 value={email}
-                onChangeText={setEmail} />
+            />
             <Input
                 ref={userInput}
-                autoCorrect={false}
                 autoCapitalize="none"
+                autoCorrect={false}
                 iconName={"info"}
                 placeholder={userLogin}
+                onChangeText={setUser}
                 value={user}
-                onChangeText={setUser} />
+            />
             <Input
                 ref={passInput}
-                autoCorrect={false}
                 autoCapitalize="none"
+                autoCorrect={false}
                 iconName={"lock"}
                 placeholder="Senha"
-                value={pass}
                 onChangeText={setPass}
-                secureTextEntry />
+                value={pass}
+                secureTextEntry
+            />
             <Input
                 ref={passConfInput}
-                autoCorrect={false}
                 autoCapitalize="none"
+                autoCorrect={false}
                 iconName={"lock"}
                 placeholder="Confirmação de Senha"
-                value={passConf}
                 onChangeText={setPassConf}
-                secureTextEntry />
+                value={passConf}
+                secureTextEntry
+            />
             <Button
                 color={typeStudant ? theme.colors.User_Type_1 : theme.colors.User_Type_2}
+                onPress={() => register()}
                 title="Cadastrar"
-                onPress={() => register()} />
+            />
             <Button
                 color={typeStudant ? theme.colors.User_Type_1 : theme.colors.User_Type_2}
+                onPress={() => changeType()}
                 title={"Eu não sou " + userType}
-                onPress={() => changeType()} />
+            />
         </Container>
     )
 }

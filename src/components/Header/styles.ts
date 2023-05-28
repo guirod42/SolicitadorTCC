@@ -1,10 +1,10 @@
 import styled , { css } from "styled-components/native";
 
 export const Container = styled.View`
+    color: ${({theme}) => theme.colors.Text_Primary};
     width: 100%;
     height: 56px;
     border: 1px solid;
-    color: ${({theme}) => theme.colors.Text_Prymary};
     padding: 10;
 `;
 

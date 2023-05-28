@@ -1,18 +1,30 @@
+import * as Notifications from 'expo-notifications'; 
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
 import React, {
-    useState,
     useEffect,
+    useState,
     useRef,
 } from 'react';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import {
     Container,
     Title,
     SubTitle
 } from './styles';
 import Api from '../../apiService/api.js';
-import Button from '../../components/Button';
+import AsyncStorage from '@react-native-async-storage/async-storage';import Button from '../../components/Button';
+import Input from '../../components/Input';
+import Loading from '../../components/Loading';
+
 type RequestRouteProp = RouteProp<propsNavigationStack, 'ModelScreen'>;
-import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: true,
+    })
+});
 
 const ModelScreen = () => {
     const navigation = useNavigation<propsStack>();

@@ -1,14 +1,14 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 import {
     Container,
-    Title,
-    SubTitle,
+    Data,
     Photo,
     PhotoSpace,
-    Data,
+    ProfessorDataProps,
     Select,
     SelectSpace,
-    ProfessorDataProps
+    SubTitle,
+    Title,
 } from "./styles";
 
 const Professor = forwardRef((props: ProfessorDataProps, ref) => {

@@ -14,13 +14,13 @@ import {
 import { useTheme } from "styled-components/native";
 
 const Input = forwardRef((props: any, ref) => {
-    const [sec, setSec] = useState(props.secureTextEntry);
-    const [withLock] = useState(props.secureTextEntry);
-    const [textFlex] = useState(props.heightChange);
-    const [inputHeight, setInputHeight] = useState(0);
-    const [error, setError] = useState(false);
     const inputRef = React.createRef<StyledTextInputProps>();
     const theme = useTheme();
+    const [sec, setSec] = useState(props.secureTextEntry);
+    const [error, setError] = useState(false);
+    const [inputHeight, setInputHeight] = useState(0);
+    const [textFlex] = useState(props.heightChange);
+    const [withLock] = useState(props.secureTextEntry);
 
     useImperativeHandle(ref, () => ({
         focusOnError() {
@@ -30,49 +30,44 @@ const Input = forwardRef((props: any, ref) => {
         resetError() {
             setError(false);
         }
-    }))
+    }));
 
     return (
         <Container>
             <StyledTextInput
                 ref={[inputRef]}
-                underlineColorAndroid='transparent'
-                placeholderTextColor={theme.colors.Primary_700}
                 borderAlert={error ? true : false}
+                cursorColor={error ? theme.colors.Alert : theme.colors.Text_Primary}
+                inputHigh={inputHeight}
                 lockIcon={withLock}
-                {...props}
-                secureTextEntry={sec}
-                cursorColor={error ?
-                    theme.colors.Alert
-                    : theme.colors.Text_Primary}
                 multiline={textFlex}
                 onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
-                inputHigh={inputHeight}
+                placeholderTextColor={theme.colors.Primary_700}
+                secureTextEntry={sec}
+                underlineColorAndroid='transparent'
+                {...props}
             />
 
             <Icon>
                 <Feather
+                    color={error ? theme.colors.Alert : theme.colors.Text_Primary}
                     name={props.iconName}
                     size={30}
-                    color={error ?
-                        theme.colors.Alert
-                        : theme.colors.Text_Primary} />
+                />
             </Icon>
 
             {props.secureTextEntry && (
                 <IconPass
                     onPress={() => setSec(!sec)} >
                     <Feather
+                        color={error ? theme.colors.Alert : theme.colors.Text_Primary}
                         name={sec ? "eye-off" : "eye"}
                         size={30}
-                        color={error ?
-                            theme.colors.Alert
-                            : theme.colors.Text_Primary} />
+                    />
                 </IconPass>
             )}
         </Container>
     );
 });
-
 
 export default Input;

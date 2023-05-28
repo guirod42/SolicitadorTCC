@@ -11,9 +11,9 @@ const Loading = (props: LoadingProps) => {
         <Modal transparent visible={props.active}>
             <View style={styles.loadingContainer}>
                 <ActivityIndicator
-                    size="large"
-                    color="black"
                     animating={true}
+                    color="black"
+                    size="large"
                 />
             </View>
         </Modal>
@@ -23,8 +23,8 @@ const Loading = (props: LoadingProps) => {
 const styles = StyleSheet.create({
     loadingContainer: {
         flex: 1,
-        justifyContent: "center",
         alignContent: "center",
+        justifyContent: "center",
     }
 });
 

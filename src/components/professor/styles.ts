@@ -1,5 +1,5 @@
 import { TouchableOpacityProps } from "react-native";
-import styled, { css } from "styled-components/native";
+import styled from "styled-components/native";
 
 export interface ProfessorDataProps extends TouchableOpacityProps {
     id: string;
@@ -52,8 +52,8 @@ export const Photo = styled.Image`
 
 export const Title = styled.Text`
     font-size: 16px;
-    text-align: left;
     font-weight: bold;
+    text-align: left;
 `;
 
 export const SubTitle = styled.Text`

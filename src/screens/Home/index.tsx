@@ -1,9 +1,14 @@
+import * as Notifications from 'expo-notifications';
+import { useNavigation } from '@react-navigation/native';
+import { StyledTextInputProps } from "../../components/Input/styles";
+import { Camera, CameraType } from 'expo-camera';
+import { StylesNotificationBody } from '../../interface/inputInterface';
+import { propsStack } from '../../routes/Stack/Models';
 import React, {
     useState,
     useEffect,
     useRef,
 } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import {
     Container,
     Logo,
@@ -11,15 +16,10 @@ import {
     SingUp,
     Touch
 } from './styles';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
 import Api from '../../apiService/api.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { propsStack } from '../../routes/Stack/Models';
-import * as Notifications from 'expo-notifications';
-import { StyledTextInputProps } from "../../components/Input/styles";
-import { Camera, CameraType } from 'expo-camera';
-import { StylesNotificationBody } from '../../interface/inputInterface';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 import Loading from '../../components/Loading';
 
 Notifications.setNotificationHandler({
@@ -178,8 +178,8 @@ const Home = () => {
                 autoCapitalize="none"
                 iconName={"user"}
                 placeholder={"Usuário"}
-                value={user}
                 onChangeText={setUser}
+                value={user}
             />
             <Input
                 ref={passInput}
@@ -187,8 +187,8 @@ const Home = () => {
                 autoCapitalize="none"
                 iconName={"lock"}
                 placeholder={"Senha"}
-                value={pass}
                 onChangeText={setPass}
+                value={pass}
                 secureTextEntry
             />
             <Button

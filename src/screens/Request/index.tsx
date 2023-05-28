@@ -13,23 +13,24 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { useTheme } from "styled-components/native";
 
 const Request = () => {
+    const descriptionInput = React.createRef<StyledTextInputProps>();
     const navigation = useNavigation<propsStack>();
-    const params = useRoute<RequestRouteProp>();
-    const userid = params.params.userId;
-    const name = params.params.userName;
-    const [chosenProfessor, setChosenProfessor] = useState<ProfessorDataProps>();
-    const [professorsList, setProfessorsList] = useState<ProfessorDataProps[]>([]);
     const searchInput = React.createRef<StyledTextInputProps>();
     const titleInput = React.createRef<StyledTextInputProps>();
-    const descriptionInput = React.createRef<StyledTextInputProps>();
+    const params = useRoute<RequestRouteProp>();
+    const name = params.params.userName;
+    const userid = params.params.userId;
+    const theme = useTheme();
+    const [chosenProfessor, setChosenProfessor] = useState<ProfessorDataProps>();
+    const [description, setDescription] = useState<string>('');
+    const [professorsList, setProfessorsList] = useState<ProfessorDataProps[]>([]);
     const [search, setSearch] = useState<string>('');
     const [title, setTitle] = useState<string>('');
-    const [description, setDescription] = useState<string>('');
-    const theme = useTheme();
 
     const filteredProfessors = professorsList.filter(
         (item) => item.nome.toLowerCase().includes(search.toLowerCase())
     );
+
     const noResultsComponent = (
         <Text style={{ fontStyle: 'italic' }}>Nenhum resultado encontrado</Text>
     );
@@ -59,12 +60,12 @@ const Request = () => {
                     <Title>{'Selecione o professor'}</Title>
                     <Input
                         ref={searchInput}
-                        autoCorrect={false}
                         autoCapitalize="none"
+                        autoCorrect={false}
                         iconName="search"
                         placeholder="Buscar professor..."
-                        value={search}
                         onChangeText={setSearch}
+                        value={search}
                     />
                     {filteredProfessors.length > 0 ? (
                         <List
@@ -88,33 +89,32 @@ const Request = () => {
                 <>
                     <Title>{'Professor selecionado'}</Title>
                     <SubTitle>{chosenProfessor.nome}</SubTitle>
-
                     <SubTitle>{'Título da proposta de TCC'}</SubTitle>
                     <Input
                         ref={titleInput}
-                        autoCorrect={false}
                         autoCapitalize="true"
+                        autoCorrect={false}
                         iconName="file-text"
                         placeholder="Título da proposta"
-                        value={title}
                         onChangeText={setTitle}
+                        value={title}
                     />
-
                     <SubTitle>{'Descrição'}</SubTitle>
                     <Input
                         ref={descriptionInput}
-                        autoCorrect={false}
                         autoCapitalize="true"
+                        autoCorrect={false}
+                        heightChange={true}
                         iconName="file-text"
                         placeholder="Descrição da proposta"
-                        value={description}
                         onChangeText={setDescription}
-                        heightChange={true}
+                        value={description}
                     />
                     <Button
                         color={theme.colors.Alert}
+                        onPress={() => setChosenProfessor(undefined)}
                         title="Alterar professor"
-                        onPress={() => setChosenProfessor(undefined)} />
+                    />
                 </>
             )}
         </Container>

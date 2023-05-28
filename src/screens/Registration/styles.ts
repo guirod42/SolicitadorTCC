@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
-    background: ${({ theme }) => theme.colors.Background};    
     align-items: center;
+    background: ${({ theme }) => theme.colors.Background};    
     justify-content: center;
     padding-top: 30px;
 `;
@@ -14,12 +14,12 @@ export const Logo = styled.Image`
 `;
 
 export const Title = styled.Text`
-    margin-top: 7px;
-    font-size: 28px;
     color: ${({ theme }) => theme.colors.Principal_001};
-    text-align: center;
+    font-size: 28px;
     font-weight: 700;
+    margin-top: 7px;
     padding: 0 24px 16px;
+    text-align: center;
 `;
 
 export const SingUp = styled.TouchableOpacity`
