@@ -4,24 +4,25 @@ import React, {
     useRef,
 } from 'react';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
+import { userInterface } from '../../interface/userInterface';
 import {
     Container,
-    Title
+    Title,
+    SubTitle
 } from './styles';
 import Api from '../../apiService/api.js';
 import Button from '../../components/Button';
-type RequestRouteProp = RouteProp<propsNavigationStack, 'UserProfile'>;
-import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
-import { userInterface } from '../../interface/userInterface';
-import { SubTitle } from './styles';
 import UserContact from '../../components/UserContact';
+
+type RequestRouteProp = RouteProp<propsNavigationStack, 'UserProfile'>;
 
 const UserProfile = () => {
     const navigation = useNavigation<propsStack>();
     const params = useRoute<RequestRouteProp>();
     const userId = params.params?.userId;
     const [userProfile, setUserProfile] = useState<userInterface>();
-    
+
     async function searchUserData() {
         await Api.get(`/usuarios?id=${userId}`).then((response) => {
             console.log(response.data);
