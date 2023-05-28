@@ -7,6 +7,7 @@ export const Container = styled.SafeAreaView`
     background: ${({ theme }) => theme.colors.Background};    
     align-items: center;
     justify-content: flex-start;
+    padding-top: 30px;
 `;
 
 export const List = styled(FlatList as new (props: FlatListProps<ProfessorDataProps>) => FlatList<ProfessorDataProps>)`
@@ -19,7 +20,7 @@ export const Title = styled.Text`
     color: ${({ theme }) => theme.colors.Principal_001};
     text-align: center;
     font-weight: 700;
-    padding: 0 24px 16px;
+    padding-bottom: 16px;
 `;
 
 export const SubTitle = styled.Text`

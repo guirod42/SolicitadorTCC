@@ -93,13 +93,13 @@ const Home = () => {
         if (user === '') {
             userInput.current?.focusOnError();
             setLoading(false);
-            return
+            return;
         }
 
         if (pass === '') {
             passInput.current?.focusOnError();
             setLoading(false);
-            return
+            return;
         }
         await Api.get(`/usuarios?login=${user}&password=${pass}`)
             .then(
@@ -116,7 +116,7 @@ const Home = () => {
                         await AsyncStorage.setItem('@SistemaTCC:userID', String(responseUser.data[0].id));
                         try {
                             if (responseUser.data[0].tipo == 1) {
-                                await Api.get("/solicitacoes?AlunoSolicitanteID=" + responseUser.data[0].id).then(async (response) => {
+                                await Api.get(`/solicitacoes?AlunoSolicitanteID=${responseUser.data[0].id}`).then(async (response) => {
                                     if (response.data.length > 0) {
                                         navigation.navigate('Student', {
                                             userId: responseUser.data[0].id,
@@ -161,11 +161,11 @@ const Home = () => {
     }
 
 
-function changeUserTest(){
-    if (user == 'Guilherme') {setUser("Carlos"), setPass("12345")}
-    else if (user == 'Carlos') {setUser("Humberto"), setPass("123")}
-    else {setUser("Guilherme"), setPass("12345")}   
-}
+    function changeUserTest() {
+        if (user == 'Guilherme') { setUser("Carlos"), setPass("12345") }
+        else if (user == 'Carlos') { setUser("Humberto"), setPass("123") }
+        else { setUser("Guilherme"), setPass("12345") }
+    }
 
     return (
         <Container>
@@ -211,6 +211,7 @@ function changeUserTest(){
                 title="Camera"
                 onPress={() => toggleCameraType()} />
             */}
+
             <Button
                 color="black"
                 title="Token"

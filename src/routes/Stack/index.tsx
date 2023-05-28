@@ -6,6 +6,7 @@ import Registration from '../../screens/Registration'
 import Request from "../../screens/Request";
 import Professor from "../../screens/Professor";
 import Student from "../../screens/Student";
+import UserProfile from "../../screens/UserProfile"; 
 
 const { Navigator, Screen } = createNativeStackNavigator<propsNavigationStack>()
 
@@ -19,7 +20,7 @@ export default function () {
             <Screen name="Request" component={Request} />
             <Screen name="Professor" component={Professor} />
             <Screen name="Student" component={Student} />
-
+            <Screen name="UserProfile" component={UserProfile} />
         </Navigator>
     )
 }

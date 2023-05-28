@@ -4,13 +4,13 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     justify-content: center;
-    background: ${({ theme }) => theme.colors.Background};
+    background: ${({ theme }) => theme.colors.Background};    
+    padding-top: 30px;
 `;
 
 export const Logo = styled.Image`
     height: 200px;
     width: 200px;
-    margin-top: 30px;
 `;
 
 export const Title = styled.Text`

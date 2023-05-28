@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { Text } from "react-native";
 import { Container, List, Title, SubTitle } from "./styles";
 import Professor from "../../components/Professor";
@@ -10,13 +8,15 @@ import Input from '../../components/Input';
 import { StyledTextInputProps } from "../../components/Input/styles";
 import Button from '../../components/Button';
 type RequestRouteProp = RouteProp<propsNavigationStack, 'Request'>;
+import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { useTheme } from "styled-components/native";
 
 const Request = () => {
     const navigation = useNavigation<propsStack>();
     const params = useRoute<RequestRouteProp>();
-    const userid = params.params?.userId;
-    const name = params.params?.userName;
+    const userid = params.params.userId;
+    const name = params.params.userName;
     const [chosenProfessor, setChosenProfessor] = useState<ProfessorDataProps>();
     const [professorsList, setProfessorsList] = useState<ProfessorDataProps[]>([]);
     const searchInput = React.createRef<StyledTextInputProps>();
@@ -55,6 +55,7 @@ const Request = () => {
         <Container>
             {chosenProfessor == undefined ? (
                 <>
+                    <SubTitle>Nome</SubTitle>
                     <Title>{'Selecione o professor'}</Title>
                     <Input
                         ref={searchInput}
@@ -64,7 +65,6 @@ const Request = () => {
                         placeholder="Buscar professor..."
                         value={search}
                         onChangeText={setSearch}
-                        
                     />
                     {filteredProfessors.length > 0 ? (
                         <List

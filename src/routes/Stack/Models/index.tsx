@@ -15,6 +15,13 @@ export type propsNavigationStack = {
         userId: number;
         userName: string;
     };
+    UserProfile: {
+        userId: number;
+    };
+    ModelScreen: {
+        param1: string;
+        param2: string;
+    }
 }
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>;

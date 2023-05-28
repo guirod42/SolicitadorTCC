@@ -3,10 +3,10 @@ import {
     Container
 } from "./styles";
 
-const BaseComponent = forwardRef((props: any, ref) => {
+const UserContact = forwardRef((props: any, ref) => {
     return (
         <Container/>
         );
 });
 
-export default BaseComponent;
+export default UserContact;

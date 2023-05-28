@@ -11,34 +11,23 @@ import {
 } from './styles';
 import Api from '../../apiService/api.js';
 import Button from '../../components/Button';
-type RequestRouteProp = RouteProp<propsNavigationStack, 'Professor'>;
+type RequestRouteProp = RouteProp<propsNavigationStack, 'ModelScreen'>;
 import { propsStack, propsNavigationStack } from '../../routes/Stack/Models';
 
-const Professor = () => {
+const ModelScreen = () => {
     const navigation = useNavigation<propsStack>();
     const params = useRoute<RequestRouteProp>();
-    const userid = params.params?.userId;
-    const name = params.params?.userName;
+    const param1 = params.params?.param1;
+    const param2 = params.params?.param2;
     useEffect(() => {
 
     }, [])
 
-    function seeProfile(){
-        navigation.navigate('UserProfile', {
-            userId: userid,
-        });
-    }
-
-
     return (
         <Container>
-            <Title>{'Página do Professor '+ name}</Title>
-            <Button
-                color="green"
-                title="Abrir perfil"
-                onPress={() => seeProfile()} />
+            
         </Container>
     )
 }
 
-export default Professor;
+export default ModelScreen;
