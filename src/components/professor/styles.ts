@@ -57,9 +57,9 @@ export const Title = styled.Text`
 `;
 
 export const SubTitle = styled.Text`
-    font-size: 12px;
+    font-size: 10px;
     font-style: italic;
-    margin-left: 15px;
+    margin-left: 10px;
 `;
 
 export const Select = styled.Text`

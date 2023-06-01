@@ -10,11 +10,21 @@ export const Container = styled.SafeAreaView`
     padding-top: 30px;
 `;
 
-export const List = styled(FlatList as new (props: FlatListProps<ProfessorDataProps>) => FlatList<ProfessorDataProps>)`
+export const List = styled(FlatList as new 
+    (props: FlatListProps<ProfessorDataProps>) => FlatList<ProfessorDataProps>)`
     margin-left: 15px;
 `;
 
-export const Title = styled.Text`
+export const TitleOne = styled.Text`
+    margin-top: 35px;
+    font-size: 28px;
+    color: ${({ theme }) => theme.colors.Principal_001};
+    text-align: center;
+    font-weight: 700;
+    --padding-bottom: 16px;
+`;
+
+export const TitleTwo = styled.Text`
     margin-top: 35px;
     font-size: 28px;
     color: ${({ theme }) => theme.colors.Principal_001};

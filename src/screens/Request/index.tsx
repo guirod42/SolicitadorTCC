@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text } from "react-native";
-import { Container, List, Title, SubTitle } from "./styles";
+import { Container, List, TitleOne, TitleTwo, SubTitle } from "./styles";
 import Professor from "../../components/Professor";
 import { ProfessorDataProps } from "../../components/Professor/styles"
 import Api from "../../apiService/api";
@@ -18,8 +18,8 @@ const Request = () => {
     const searchInput = React.createRef<StyledTextInputProps>();
     const titleInput = React.createRef<StyledTextInputProps>();
     const params = useRoute<RequestRouteProp>();
-    const name = params.params.userName;
-    const userid = params.params.userId;
+    const name: string = params.params?.userName;
+    const userid: number = params.params?.userId;
     const theme = useTheme();
     const [chosenProfessor, setChosenProfessor] = useState<ProfessorDataProps>();
     const [description, setDescription] = useState<string>('');
@@ -56,8 +56,9 @@ const Request = () => {
         <Container>
             {chosenProfessor == undefined ? (
                 <>
-                    <SubTitle>Nome</SubTitle>
-                    <Title>{'Selecione o professor'}</Title>
+                    <SubTitle>{`Olá, ${name}`}</SubTitle>
+                    <TitleOne>{'Selecione o professor'}</TitleOne>
+                    <SubTitle>{'Para realizar a solicitação de orientação'}</SubTitle>
                     <Input
                         ref={searchInput}
                         autoCapitalize="none"
@@ -87,9 +88,9 @@ const Request = () => {
                 </>
             ) : (
                 <>
-                    <Title>{'Professor selecionado'}</Title>
-                    <SubTitle>{chosenProfessor.nome}</SubTitle>
+                    <TitleTwo>{`Enviar proposta ao professor(a): ${chosenProfessor.nome}`}</TitleTwo>
                     <SubTitle>{'Título da proposta de TCC'}</SubTitle>
+
                     <Input
                         ref={titleInput}
                         autoCapitalize="true"
@@ -111,13 +112,19 @@ const Request = () => {
                         value={description}
                     />
                     <Button
+                        color={theme.colors.Success}
+                        onPress={() => setChosenProfessor(undefined)}
+                        title="Enviar solicitação"
+                    />
+
+                    <Button
                         color={theme.colors.Alert}
                         onPress={() => setChosenProfessor(undefined)}
                         title="Alterar professor"
                     />
                 </>
             )}
-        </Container>
+        </Container >
     );
 }
 

@@ -1,31 +1,33 @@
 import React, { forwardRef } from 'react';
 import { Feather } from '@expo/vector-icons'
+import { Modal } from 'react-native';
 import { useTheme } from "styled-components/native";
 import { proposalInterface } from '../../interface/proposalInterface'
 import {
     Container,
     Data,
-    Photo,
-    PhotoSpace,
-    Select,
+    Title,
+    SubTitle,
+    Student,
     Accept,
     Refuse,
-    SubTitle,
-    Title,
-    Icons,
-    Student,
+    Icons
 } from "./styles";
 
-const Proposal = forwardRef((props: proposalInterface, ref) => {
+interface ProposalDetailsProps extends proposalInterface {
+    active: boolean
+}
+
+const ProposalDetails = (props: ProposalDetailsProps) => {
     const theme = useTheme();
     const handlePress = () => {
         if (props.onPress) {
             props.onPress();
         }
     };
-
     return (
-        <Container>
+        <Modal transparent visible={props.active}>
+            <Container>
             <Data>
                 <Title
                     numberOfLines={2}>
@@ -54,7 +56,8 @@ const Proposal = forwardRef((props: proposalInterface, ref) => {
                 </Refuse>
             </Icons>
         </Container>
+        </Modal>
     );
-});
+}
 
-export default Proposal;
+export default ProposalDetails;

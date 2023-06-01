@@ -16,11 +16,11 @@ import { useTheme } from "styled-components/native";
 const Input = forwardRef((props: any, ref) => {
     const inputRef = React.createRef<StyledTextInputProps>();
     const theme = useTheme();
-    const [sec, setSec] = useState(props.secureTextEntry);
+    const [sec, setSec] = useState(props.lockIcon);
     const [error, setError] = useState(false);
     const [inputHeight, setInputHeight] = useState(0);
     const [textFlex] = useState(props.heightChange);
-    const [withLock] = useState(props.secureTextEntry);
+    const [withLock] = useState(props.lockIcon);
 
     useImperativeHandle(ref, () => ({
         focusOnError() {
@@ -56,7 +56,7 @@ const Input = forwardRef((props: any, ref) => {
                 />
             </Icon>
 
-            {props.secureTextEntry && (
+            {props.lockIcon && (
                 <IconPass
                     onPress={() => setSec(!sec)} >
                     <Feather

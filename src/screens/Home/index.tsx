@@ -38,9 +38,9 @@ const Home = () => {
     const notificationReceivedRef = useRef<any>();
     const notificationResponseRef = useRef<any>();
     const stylesNotification = useRef<StyledNotificationBody>();
-    const [flLoading, setLoading] = useState<boolean>(false)
-    const [user, setUser] = useState<string>('Guilherme');
-    const [pass, setPass] = useState<string>('12345');
+    const [flLoading, setLoading] = useState<boolean>(false);
+    const [user, setUser] = useState<string>('Humberto');
+    const [pass, setPass] = useState<string>('123');
     const [expoToken, setExpoToken] = useState<string>('');
     const [notificationTitle, setNotificationTitle] = useState<string>('');
     const [type, setType] = useState<CameraType>(CameraType.back);
@@ -189,7 +189,7 @@ const Home = () => {
                 placeholder={"Senha"}
                 onChangeText={setPass}
                 value={pass}
-                secureTextEntry
+                lockIcon={true}
             />
             <Button
                 color="green"

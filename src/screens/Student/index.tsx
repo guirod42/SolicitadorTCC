@@ -23,7 +23,9 @@ const Student = () => {
     }, [])
 
     return (
-        <Container />
+        <Container>
+            <Title>Página alunos</Title>
+        </Container>
     )
 }
 

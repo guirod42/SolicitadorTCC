@@ -15,7 +15,7 @@ export default {
     Primary_900: '#E6E6E6',
 
     Alert: '#FF0000',
-    Success: '#00CC00',
+    Success: '#00A000',
 
     Info: '#0000FF',
     
