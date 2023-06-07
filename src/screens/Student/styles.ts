@@ -1,4 +1,6 @@
 import styled from "styled-components/native";
+import { FlatList, FlatListProps } from "react-native";
+import { taskInterface } from './../../interface/taskInterface'
 
 export const Container = styled.SafeAreaView`
     background: ${({ theme }) => theme.colors.Background};    
@@ -23,4 +25,9 @@ export const SubTitle = styled.Text`
     font-weight: 700;
     margin-top: 10px;
     text-align: center;
+`;
+
+export const List = styled(FlatList as new
+    (props: FlatListProps<taskInterface>) => FlatList<taskInterface>)`
+    
 `;

@@ -34,9 +34,11 @@ const Proposal = forwardRef((props: proposalInterface, ref) => {
                     numberOfLines={2}
                 >{props.Descricao}</SubTitle>
                 <Student
-                    numberOfLines={2}>
+                    numberOfLines={1}>
                     {props.Solicitante}</Student>
             </Data>
+
+
             <Icons>
                 <Accept onPress={handlePress}>
                     <Feather

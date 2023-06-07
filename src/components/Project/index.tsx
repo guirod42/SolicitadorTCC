@@ -1,12 +1,14 @@
 import React, { forwardRef } from 'react';
+import { projectInterface } from './../../interface/projectInterface'
 import {
     Container
 } from "./styles";
 
-const Project = forwardRef((props: any, ref) => {
+
+const Project = forwardRef((props: projectInterface, ref) => {
     return (
-        <Container/>
-        );
+        <Container />
+    );
 });
 
 export default Project;

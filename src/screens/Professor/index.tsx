@@ -106,6 +106,7 @@ const Professor = () => {
                 title="Abrir perfil"
                 onPress={() => seeProfile()} />
             */}
+            
         </Container>
     )
 }
